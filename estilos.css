@@ -1,0 +1,51 @@
+body {
+  background-color: #f4f6f7;
+  color: #2b2d42;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #005f73; /* Azul petróleo */
+  color: white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+section {
+  background-color: white;
+  color: #2b2d42;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #005f73; /* Azul petróleo */
+  border-bottom: 2px solid #005f73;
+  padding-bottom: 5px;
+}
+
+.servicio-bloque {
+  margin-bottom: 15px;
+}
+
+.boton-whatsapp {
+  display: inline-block;
+  background-color: #25d366;
+  color: white;
+  padding: 15px 25px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.boton-whatsapp:hover {
+  background-color: #128c7e;
+}
