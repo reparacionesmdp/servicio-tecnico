@@ -86,3 +86,11 @@ h2 {
     margin-top: 25px;
     box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
 }
+
+        /* Quitar el subrayado y mantener el color en las tarjetas enlace */
+.tarjeta-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
