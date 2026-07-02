@@ -17,29 +17,78 @@
         <h2>Nuestros Servicios</h2>
 
         <div class="grid-servicios">
+            <!-- Tarjeta 1: Electrodomésticos -->
             <div class="tarjeta">
                 <h3>🏠 Línea Blanca y Hogar</h3>
                 <p>Reparación de electrodomésticos para el hogar (licuadoras, microondas, etc.).</p>
             </div>
 
+            <!-- Tarjeta 2: Audio -->
             <div class="tarjeta">
                 <h3>🔊 Audio Clásico y Digital</h3>
                 <p>Sintoamplificadores, sistemas de sonido, equipos de música.</p>
             </div>
 
+            <!-- Tarjeta 3: CD y DVD -->
             <div class="tarjeta">
                 <h3>💿 Lectores y Reproductores</h3>
                 <p>Limpieza y reparación de reproductores de CD y DVD.</p>
             </div>
 
+            <!-- Tarjeta 4: Diagnóstico -->
             <div class="tarjeta">
                 <h3>⚙️ Diagnóstico Técnico</h3>
                 <p>Fallas eléctricas, motores, mecanismos.</p>
             </div>
         </div>
 
+        <!-- Nueva Sección: Buscador de Barrios -->
+        <section class="contenedor-buscador">
+            <h2>🚚 Retiro a Domicilio</h2>
+            <p>Ingresá tu barrio en Mar del Plata para conocer el costo de retiro y envío.</p>
+            
+            <input type="text" id="buscador-barrios" placeholder="Ej: Centro, La Perla..." autocomplete="off">
+            
+            <div id="resultado-busqueda"></div>
+        </section>
+
+        <!-- Botón único de contacto al final -->
         <a href="https://wa.me/5492234373563?text=%C2%A1Hola!%20Vi%20tu%20p%C3%A1gina%20web%20y%20quer%C3%ADa%20consultar%20por%20una%20reparaci%C3%B3n." class="btn-whatsapp" target="_blank">Pedir Presupuesto por WhatsApp 💬</a>
     </main>
 
+    <!-- Lógica del Buscador (JavaScript) -->
+    <script>
+        // Base de datos de precios reales
+        const preciosBarrios = {
+            "centro": 5000,
+            "la perla": 7000,
+            "los troncos": 10000,
+            "constitucion": 10000
+        };
+
+        document.getElementById('buscador-barrios').addEventListener('input', function(e) {
+            const busqueda = e.target.value.toLowerCase().trim();
+            const resultadoDiv = document.getElementById('resultado-busqueda');
+            
+            if (busqueda === "") {
+                resultadoDiv.innerHTML = "";
+                return;
+            }
+
+            if (preciosBarrios[busqueda]) {
+                const precio = preciosBarrios[busqueda];
+                resultadoDiv.innerHTML = `<p class="precio-neon">Costo de retiro: $${precio}</p>`;
+            } else {
+                const mensajeWA = encodeURIComponent(`¡Hola! Mi barrio (${e.target.value}) no aparece en la lista. Quiero consultar el costo de retiro a domicilio y coordinar un horario.`);
+                resultadoDiv.innerHTML = `
+                    <p class="error-busqueda">El barrio no está en la lista de precios fijos.</p>
+                    <a href="https://wa.me/5492234373563?text=${mensajeWA}" class="btn-whatsapp-dinamico" target="_blank">
+                        Calcular envío y coordinar horario por WhatsApp 💬
+                    </a>
+                `;
+            }
+        });
+    </script>
 </body>
-</html>
+    </html>
+    
