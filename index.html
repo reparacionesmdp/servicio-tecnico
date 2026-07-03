@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios de Reparación</title>
+    <title>Servicios de Reparación Profesional</title>
     <link rel="stylesheet" href="estilos.css">
     <style>
-        /* Agregamos pequeños estilos complementarios para la nota importante */
+        /* Estilos complementarios para la nota importante */
         .info-nota {
             font-size: 14px;
             color: #86c232;
@@ -25,66 +25,74 @@
 <body>
 
     <header>
-        <h1>Martin Pulcini</h1>
-        <p>Especialistas en la reparación de electrodomésticos, equipos de audio y calefactores. Servicio confiable en Mar del Plata. Consulte su presupuesto por WhatsApp.</p>
+        <h1>reparacionesmdp</h1>
+        <p>Especialistas en la reparación de electrodomésticos, equipos de audio y reproductores. Servicio confiable en Mar del Plata. Consulte su presupuesto por WhatsApp.</p>
     </header>
 
     <main>
         <h2>Nuestros Servicios</h2>
 
         <div class="grid-servicios">
-            <!-- Tarjeta 1: Electrodomésticos -->
             <div class="tarjeta">
                 <h3>🏠 Línea Blanca y Hogar</h3>
                 <p>Reparación de electrodomésticos para el hogar (licuadoras, microondas, etc.).</p>
             </div>
 
-            <!-- Tarjeta 2: Audio -->
             <div class="tarjeta">
                 <h3>🔊 Audio Clásico y Digital</h3>
                 <p>Sintoamplificadores, sistemas de sonido, equipos de música.</p>
             </div>
 
-            <!-- Tarjeta 3: CD y DVD -->
             <div class="tarjeta">
                 <h3>💿 Lectores y Reproductores</h3>
                 <p>Limpieza y reparación de reproductores de CD y DVD.</p>
             </div>
 
-            <!-- Tarjeta 4: Diagnóstico -->
             <div class="tarjeta">
                 <h3>⚙️ Diagnóstico Técnico</h3>
                 <p>Fallas eléctricas, motores, mecanismos.</p>
             </div>
         </div>
 
-        <!-- Nueva Sección: Buscador de Barrios Unificado -->
         <section class="contenedor-buscador">
             <h2>🚚 Retiro a Domicilio</h2>
             <p>Ingresá tu barrio en Mar del Plata para conocer el costo de retiro y envío.</p>
             
-            <input type="text" id="buscador-barrios" placeholder="Ej: Centro, Alfar..." autocomplete="off">
+            <input type="text" id="buscador-barrios" list="barrios-sugeridos" placeholder="Ej: Centro, Alfar..." autocomplete="off">
+            
+            <datalist id="barrios-sugeridos">
+                <option value="Centro"></option>
+                <option value="Parque Luro"></option>
+                <option value="San José"></option>
+                <option value="Don Bosco"></option>
+                <option value="Villa Primera"></option>
+                <option value="La Perla"></option>
+                <option value="Libertad"></option>
+                <option value="Los Troncos"></option>
+                <option value="Constitución"></option>
+                <option value="Alfar"></option>
+            </datalist>
             
             <div id="resultado-busqueda"></div>
         </section>
 
-        <!-- Botón único de contacto al final -->
         <a href="https://wa.me/5492234373563?text=%C2%A1Hola!%20Vi%20tu%20p%C3%A1gina%20web%20y%20quer%C3%ADa%20consultar%20por%20una%20reparaci%C3%B3n." class="btn-whatsapp" target="_blank">Pedir Presupuesto por WhatsApp 💬</a>
     </main>
 
-    <!-- Lógica del Buscador Actualizada -->
     <script>
-        // Base de datos de precios reales ampliada y corregida
+        // Base de datos de precios reales
         const preciosBarrios = {
             "centro": 5000,
             "parque luro": 5000,
             "san jose": 5000,
+            "san josé": 5000,
             "don bosco": 5000,
             "villa primera": 5000,
             "la perla": 7000,
             "libertad": 7000,
             "los troncos": 10000,
             "constitucion": 10000,
+            "constitución": 10000,
             "alfar": 10000
         };
 
@@ -106,7 +114,7 @@
             } else {
                 const mensajeWA = encodeURIComponent(`¡Hola! Mi barrio (${e.target.value.toUpperCase()}) no aparece en la lista. Quiero consultar el costo de retiro a domicilio y coordinar un horario.`);
                 resultadoDiv.innerHTML = `
-                    <p class="error-busqueda">El barrio no está en la lista de precios fijos.</p>
+                    <p class="error-busqueda">El barrio no está en la lista de precios fijos o ingresaste una dirección específica.</p>
                     <a href="https://wa.me/5492234373563?text=${mensajeWA}" class="btn-whatsapp-dinamico" target="_blank">
                         Calcular envío y coordinar horario por WhatsApp 💬
                     </a>
