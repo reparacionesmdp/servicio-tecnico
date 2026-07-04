@@ -6,7 +6,7 @@
     <title>Servicios de Reparación Profesional</title>
     <link rel="stylesheet" href="estilos.css">
     <style>
-        /* Estilos complementarios para la nota importante */
+        /* Estilos generales y complementarios */
         .info-nota {
             font-size: 14px;
             color: #86c232;
@@ -20,12 +20,81 @@
             font-weight: bold;
             margin-bottom: 5px;
         }
+
+        /* Estilos para la sección de seguimiento neón */
+        .contenedor-seguimiento {
+            background: #1a1a1a;
+            border: 2px solid #86c232;
+            box-shadow: 0 0 15px rgba(134, 194, 50, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .formulario-consulta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        #numero-orden {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #4f4f4f;
+            background: #222;
+            color: #fff;
+            border-radius: 6px;
+            outline: none;
+            transition: border 0.3s, box-shadow 0.3s;
+            min-width: 200px;
+        }
+
+        #numero-orden:focus {
+            border-color: #86c232;
+            box-shadow: 0 0 10px rgba(134, 194, 50, 0.5);
+        }
+
+        .btn-neon {
+            background: transparent;
+            color: #86c232;
+            border: 2px solid #86c232;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+        }
+
+        .btn-neon:hover {
+            background: #86c232;
+            color: #111;
+            box-shadow: 0 0 20px #86c232;
+        }
+
+        #resultado-seguimiento {
+            margin-top: 25px;
+            font-size: 18px;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .estado-alerta {
+            color: #86c232;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(134, 194, 50, 0.5);
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Martin Pulcini Reparaciones</h1>
+        <h1>reparacionesmdp</h1>
         <p>Especialistas en la reparación de electrodomésticos, equipos de audio y reproductores. Servicio confiable en Mar del Plata. Consulte su presupuesto por WhatsApp.</p>
     </header>
 
@@ -50,14 +119,26 @@
 
             <div class="tarjeta">
                 <h3>⚙️ Diagnóstico Técnico</h3>
-                <p>Fallas eléctricas, motores, mecanismos.</p>
+                <p>Fallas eléctricas, motores, mechanisms.</p>
             </div>
         </div>
+
+        <section class="contenedor-seguimiento">
+            <h2>🔍 Seguimiento de tu Equipo</h2>
+            <p>Ingresá tu número de orden para conocer el estado técnico de tu equipo en tiempo real.</p>
+            
+            <div class="formulario-consulta">
+                <input type="text" id="numero-orden" placeholder="Ej: 1001" autocomplete="off">
+                <button id="btn-consultar" class="btn-neon">Consultar Estado</button>
+            </div>
+
+            <div id="resultado-seguimiento"></div>
+        </section>
 
         <section class="contenedor-buscador">
             <h2>🚚 Retiro a Domicilio</h2>
             <p>Ingresá tu barrio en Mar del Plata para conocer el costo de retiro y envío.</p>
-
+            
             <input type="text" id="buscador-barrios" list="barrios-sugeridos" placeholder="Ej: Centro, Alfar..." autocomplete="off">
             
             <datalist id="barrios-sugeridos">
@@ -80,20 +161,11 @@
     </main>
 
     <script>
-        // Base de datos de precios reales
+        // LÓGICA DEL BUSCADOR DE BARRIOS
         const preciosBarrios = {
-            "centro": 5000,
-            "parque luro": 5000,
-            "san jose": 5000,
-            "san josé": 5000,
-            "don bosco": 5000,
-            "villa primera": 5000,
-            "la perla": 7000,
-            "libertad": 7000,
-            "los troncos": 10000,
-            "constitucion": 10000,
-            "constitución": 10000,
-            "alfar": 10000
+            "centro": 5000, "parque luro": 5000, "san jose": 5000, "san josé": 5000,
+            "don bosco": 5000, "villa primera": 5000, "la perla": 7000, "libertad": 7000,
+            "los troncos": 10000, "constitucion": 10000, "constitución": 10000, "alfar": 10000
         };
 
         document.getElementById('buscador-barrios').addEventListener('input', function(e) {
@@ -109,16 +181,35 @@
                 const precio = preciosBarrios[busqueda];
                 resultadoDiv.innerHTML = `
                     <p class="precio-neon">Costo de retiro para Barrio ${busqueda.toUpperCase()}: $${precio.toLocaleString('es-AR')}</p>
-                    <div class="info-nota">⚠️ **Nota importante:** El costo del retiro incluye la elaboración del presupuesto y el reenvío del equipo a tu domicilio, incluso si decidís no aceptar el presupuesto final.</div>
+                    <div class="info-nota">⚠️ <strong>Nota importante:</strong> El costo del retiro incluye la elaboración del presupuesto y el reenvío del equipo a tu domicilio, incluso si decidís no aceptar el presupuesto final.</div>
                 `;
             } else {
-                const mensajeWA = encodeURIComponent(`¡Hola! Mi barrio (${e.target.value.toUpperCase()}) no aparece en la lista. Quiero consultar el costo de retiro a domicilio y coordinar un horario.`);
+                const mensajeWA = encodeURIComponent(`¡Hola! Mi barrio (${e.target.value.toUpperCase()}) no aparece en la lista. Quiero consultar el costo de retiro a domicilio.`);
                 resultadoDiv.innerHTML = `
-                    <p class="error-busqueda">El barrio no está en la lista de precios fijos o ingresaste una dirección específica.</p>
-                    <a href="https://wa.me/5492234373563?text=${mensajeWA}" class="btn-whatsapp-dinamico" target="_blank">
-                        Calcular envío y coordinar horario por WhatsApp 💬
-                    </a>
+                    <p class="error-busqueda">El barrio no está en la lista de precios fijos.</p>
+                    <a href="https://wa.me/5492234373563?text=${mensajeWA}" class="btn-whatsapp-dinamico" target="_blank">Consultar por WhatsApp 💬</a>
                 `;
+            }
+        });
+
+        // LÓGICA DE PRUEBA PARA EL SEGUIMIENTO NEÓN
+        document.getElementById('btn-consultar').addEventListener('click', function() {
+            const orden = document.getElementById('numero-orden').value.trim();
+            const resultadoDiv = document.getElementById('resultado-seguimiento');
+
+            if (orden === "1001") {
+                resultadoDiv.innerHTML = `
+                    <div style="border: 1px solid #86c232; padding: 15px; background: #222;">
+                        <p><strong>Orden:</strong> #1001</p>
+                        <p><strong>Equipo:</strong> Microondas BGH</p>
+                        <p><strong>Estado:</strong> <span class="estado-alerta">⚡ EN DIAGNÓSTICO</span></p>
+                        <p style="font-size: 14px; color: #aaa; margin-top: 10px;">El técnico está revisando el circuito de alta tensión.</p>
+                    </div>
+                `;
+            } else if (orden === "") {
+                resultadoDiv.innerHTML = "<p style='color: #ff4444;'>Por favor, ingresá un número de orden.</p>";
+            } else {
+                resultadoDiv.innerHTML = "<p style='color: #ff4444;'>Orden no encontrada. Verificá el número.</p>";
             }
         });
     </script>
