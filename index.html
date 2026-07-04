@@ -57,6 +57,84 @@
         <section class="contenedor-buscador">
             <h2>🚚 Retiro a Domicilio</h2>
             <p>Ingresá tu barrio en Mar del Plata para conocer el costo de retiro y envío.</p>
+            <!-- Sección Avanzada: Seguimiento de Reparaciones -->
+<section class="contenedor-seguimiento">
+    <h2>🔍 Seguimiento de tu Equipo</h2>
+    <p>Ingresá tu número de orden para conocer el estado técnico de tu equipo en tiempo real.</p>
+    
+    <div class="formulario-consulta">
+        <!-- Campo para ingresar el número de orden -->
+        <input type="text" id="numero-orden" placeholder="Ej: 1001" autocomplete="off">
+        <!-- Botón para activar la búsqueda -->
+        <button id="btn-consultar" class="btn-neon">Consultar Estado</button>
+    </div>
+
+    <!-- Espacio donde se mostrará el resultado con animación neón -->
+    <div id="resultado-seguimiento"></div>
+</section>
+
+<style>
+    /* Estilos para la sección de seguimiento neón */
+    .contenedor-seguimiento {
+        background: #1a1a1a;
+        border: 2px solid #86c232;
+        box-shadow: 0 0 15px rgba(134, 194, 50, 0.2);
+        padding: 30px;
+        border-radius: 12px;
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    .formulario-consulta {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    #numero-orden {
+        padding: 12px 20px;
+        font-size: 16px;
+        border: 2px solid #4f4f4f;
+        background: #222;
+        color: #fff;
+        border-radius: 6px;
+        outline: none;
+        transition: border 0.3s, box-shadow 0.3s;
+        min-width: 200px;
+    }
+
+    #numero-orden:focus {
+        border-color: #86c232;
+        box-shadow: 0 0 10px rgba(134, 194, 50, 0.5);
+    }
+
+    .btn-neon {
+        background: transparent;
+        color: #86c232;
+        border: 2px solid #86c232;
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+    }
+
+    .btn-neon:hover {
+        background: #86c232;
+        color: #111;
+        box-shadow: 0 0 20px #86c232;
+    }
+
+    #resultado-seguimiento {
+        margin-top: 25px;
+        font-size: 18px;
+    }
+</style>
             
             <input type="text" id="buscador-barrios" list="barrios-sugeridos" placeholder="Ej: Centro, Alfar..." autocomplete="off">
             
