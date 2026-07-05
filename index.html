@@ -102,27 +102,32 @@
         <h2>Nuestros Servicios</h2>
 
         <div class="grid-servicios">
+            <!-- Tarjeta 1: Electrodomésticos -->
             <div class="tarjeta">
                 <h3>🏠 Línea Blanca y Hogar</h3>
                 <p>Reparación de electrodomésticos para el hogar (licuadoras, microondas, etc.).</p>
             </div>
 
+            <!-- Tarjeta 2: Audio -->
             <div class="tarjeta">
                 <h3>🔊 Audio Clásico y Digital</h3>
                 <p>Sintoamplificadores, sistemas de sonido, equipos de música.</p>
             </div>
 
+            <!-- Tarjeta 3: CD y DVD -->
             <div class="tarjeta">
                 <h3>💿 Lectores y Reproductores</h3>
                 <p>Limpieza y reparación de reproductores de CD y DVD.</p>
             </div>
 
+            <!-- Tarjeta 4: Diagnóstico -->
             <div class="tarjeta">
                 <h3>⚙️ Diagnóstico Técnico</h3>
                 <p>Fallas eléctricas, motores, mecanismos.</p>
             </div>
         </div>
 
+        <!-- SECCIÓN AVANZADA: Seguimiento de Reparaciones -->
         <section class="contenedor-seguimiento">
             <h2>🔍 Seguimiento de tu Equipo</h2>
             <p>Ingresá tu número de orden para conocer el estado técnico de tu equipo en tiempo real.</p>
@@ -135,6 +140,7 @@
             <div id="resultado-seguimiento"></div>
         </section>
 
+        <!-- SECCIÓN: Buscador de Barrios Inteligente -->
         <section class="contenedor-buscador">
             <h2>🚚 Retiro a Domicilio</h2>
             <p>Ingresá tu barrio en Mar del Plata para conocer el costo de retiro y envío.</p>
@@ -157,6 +163,7 @@
             <div id="resultado-busqueda"></div>
         </section>
 
+        <!-- Botón único de contacto al final -->
         <a href="https://wa.me/5492234373563?text=%C2%A1Hola!%20Vi%20tu%20p%C3%A1gina%20web%20y%20quer%C3%ADa%20consultar%20por%20una%20reparaci%C3%B3n." class="btn-whatsapp" target="_blank">Pedir Presupuesto por WhatsApp 💬</a>
     </main>
 
@@ -228,6 +235,7 @@
                             resultadoDiv.innerHTML = `
                                 <div style="border: 1px solid #86c232; padding: 15px; background: #222; border-radius: 6px;">
                                     <p><strong>Orden:</strong> #${ordenBuscada}</p>
+                                    <p><strong>Cliente:</strong> ${cliente}</p>
                                     <p><strong>Equipo:</strong> ${equipo}</p>
                                     <p><strong>Estado:</strong> <span class="estado-alerta">⚡ ${estado.toUpperCase()}</span></p>
                                     ${detalle ? `<p style="font-size: 14px; color: #aaa; margin-top: 10px;">${detalle}</p>` : ''}
