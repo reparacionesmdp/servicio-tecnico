@@ -89,6 +89,68 @@
             font-weight: bold;
             text-shadow: 0 0 5px rgba(134, 194, 50, 0.5);
         }
+
+        /* Estilos para el contenedor de guías */
+        .contenedor-guias {
+            background: #1a1a1a;
+            border: 2px solid #86c232;
+            box-shadow: 0 0 15px rgba(134, 194, 50, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+
+        .contenedor-guias h2 {
+            color: #86c232;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        /* Estilos para cada tarjeta desplegable */
+        .tarjeta-desplegable {
+            background: #222;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid #86c232;
+            transition: box-shadow 0.3s;
+        }
+
+        .tarjeta-desplegable:hover {
+            box-shadow: 0 0 10px rgba(134, 194, 50, 0.3);
+        }
+
+        /* Estilo del título clickeable */
+        .tarjeta-desplegable summary {
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 15px;
+            outline: none;
+            user-select: none;
+        }
+
+        .tarjeta-desplegable summary:hover {
+            color: #86c232;
+        }
+
+        /* Contenido interno una vez abierto */
+        .contenido-desplegable {
+            color: #ccc;
+            padding: 0 15px 15px 15px;
+            line-height: 1.6;
+            font-size: 14px;
+            border-top: 1px dashed rgba(134, 194, 50, 0.1);
+            padding-top: 15px;
+        }
+        
+        .contenido-desplegable p {
+            margin: 0 0 10px 0;
+        }
+        
+        .contenido-desplegable p:last-child {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -102,32 +164,27 @@
         <h2>Nuestros Servicios</h2>
 
         <div class="grid-servicios">
-            <!-- Tarjeta 1: Electrodomésticos -->
             <div class="tarjeta">
                 <h3>🏠 Línea Blanca y Hogar</h3>
                 <p>Reparación de electrodomésticos para el hogar (licuadoras, microondas, etc.).</p>
             </div>
 
-            <!-- Tarjeta 2: Audio -->
             <div class="tarjeta">
                 <h3>🔊 Audio Clásico y Digital</h3>
                 <p>Sintoamplificadores, sistemas de sonido, equipos de música.</p>
             </div>
 
-            <!-- Tarjeta 3: CD y DVD -->
             <div class="tarjeta">
                 <h3>💿 Lectores y Reproductores</h3>
                 <p>Limpieza y reparación de reproductores de CD y DVD.</p>
             </div>
 
-            <!-- Tarjeta 4: Diagnóstico -->
             <div class="tarjeta">
                 <h3>⚙️ Diagnóstico Técnico</h3>
                 <p>Fallas eléctricas, motores, mecanismos.</p>
             </div>
         </div>
 
-        <!-- SECCIÓN AVANZADA: Seguimiento de Reparaciones -->
         <section class="contenedor-seguimiento">
             <h2>🔍 Seguimiento de tu Equipo</h2>
             <p>Ingresá tu número de orden para conocer el estado técnico de tu equipo en tiempo real.</p>
@@ -140,7 +197,38 @@
             <div id="resultado-seguimiento"></div>
         </section>
 
-        <!-- SECCIÓN: Buscador de Barrios Inteligente -->
+        <section class="contenedor-guias">
+            <h2>📖 Guías de Reparación Rápida</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #aaa;">Hacé clic en cada falla para conocer el diagnóstico técnico profesional.</p>
+            
+            <details class="tarjeta-desplegable">
+                <summary>🎛️ Mi microondas enciende y gira, pero no calienta nada</summary>
+                <div class="contenido-desplegable">
+                    <p>Es una de las consultas más frecuentes en nuestro taller de Mar del Plata. El usuario programa el tiempo, el plato gira, la luz se enciende, pero al retirar el alimento, este sigue completamente frío.</p>
+                    <p><strong>¿Por qué ocurre esto?</strong> ⚡ El culpable suele estar en el <strong>circuito de alta tensión</strong>. Los microondas generan ondas de calor gracias al magnetrón, que trabaja con voltajes muy altos (cercanos a los 2000 V). Si el fusible de alta tensión se quema, el capacitor falla o el propio magnetrón se agota, el equipo funcionará visualmente, pero no tendrá energía para calentar.</p>
+                    <p><strong>¿Por qué es peligroso revisarlo en casa?</strong> ⚠️ A diferencia de otros electrodomésticos, el circuito de alta tensión almacena carga eléctrica peligrosa incluso cuando el microondas está desenchufado.</p>
+                </div>
+            </details>
+
+            <details class="tarjeta-desplegable">
+                <summary>🎆 Mi microondas hace chispas adentro (Efecto soplete)</summary>
+                <div class="contenido-desplegable">
+                    <p>Ver chispas o escuchar un ruido similar a una soldadura dentro del microondas es una situación que asusta a cualquier usuario, pero es un diagnóstico clásico en nuestro taller.</p>
+                    <p><strong>¿Por qué ocurre esto?</strong> 🧲 El origen suele estar en el <strong>pico del magnetrón</strong> (la antena que emite las ondas). Si se introduce un objeto metálico por error o si se acumula grasa y restos de comida en la placa de mica protectora, las ondas se concentran en ese punto. Esto genera un arco eléctrico que quema la mica y perfora o carboniza el pico del magnetrón, creando un "efecto soplete".</p>
+                    <p><strong>¿Tiene solución?</strong> 🛠️ ¡Sí! En <strong>reparacionesmdp</strong> retiramos el magnetrón dañado para evaluar la gravedad. Si el componente aún sirve, reemplazamos el pico metálico (capuchón) por uno nuevo, renovamos la placa de mica y realizamos una limpieza técnica con pintura dieléctrica para que el interior quede aislado nuevamente.</p>
+                </div>
+            </details>
+
+            <details class="tarjeta-desplegable">
+                <summary>🔌 Mi microondas no enciende absolutamente nada (Pantalla apagada)</summary>
+                <div class="contenido-desplegable">
+                    <p>Cuando el microondas no da ninguna señal de vida, la pantalla está completamente negra y no responde a ningún botón, el sistema entró en modo de protección térmica o eléctrica.</p>
+                    <p><strong>¿Por qué ocurre esto?</strong> 🛑 La causa más frecuente es el <strong>fusible de entrada quemado</strong> debido a un pico de tensión en la red eléctrica de Mar del Plata o por un cortocircuito interno (muchas veces provocado por un interruptor de puerta defectuoso). Otra causa común es la activación de los <strong>termostatos de seguridad</strong>, unos sensores que cortan la corriente por completo si el equipo detecta un sobrecalentamiento peligroso.</p>
+                    <p><strong>¿Cómo lo reparamos?</strong> 🛠️ En <strong>reparacionesmdp</strong> no reemplazamos el fusible a ciegas. Primero realizamos un diagnóstico con el multímetro para encontrar la falla que provocó el corte, revisamos los microinterruptores de la puerta y limpiamos los conductos de ventilación antes de colocar repuestos nuevos y originales.</p>
+                </div>
+            </details>
+        </section>
+
         <section class="contenedor-buscador">
             <h2>🚚 Retiro a Domicilio</h2>
             <p>Ingresá tu barrio en Mar del Plata para conocer el costo de retiro y envío.</p>
@@ -163,7 +251,6 @@
             <div id="resultado-busqueda"></div>
         </section>
 
-        <!-- Botón único de contacto al final -->
         <a href="https://wa.me/5492234373563?text=%C2%A1Hola!%20Vi%20tu%20p%C3%A1gina%20web%20y%20quer%C3%ADa%20consultar%20por%20una%20reparaci%C3%B3n." class="btn-whatsapp" target="_blank">Pedir Presupuesto por WhatsApp 💬</a>
     </main>
 
