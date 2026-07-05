@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios de Reparación Profesional</title>
     <link rel="stylesheet" href="estilos.css">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1980912481282118" crossorigin="anonymous"></script>
+
     <style>
         /* Estilos generales y complementarios */
         .info-nota {
@@ -164,32 +167,27 @@
         <h2>Nuestros Servicios</h2>
 
         <div class="grid-servicios">
-            <!-- Tarjeta 1: Electrodomésticos -->
             <div class="tarjeta">
                 <h3>🏠 Línea Blanca y Hogar</h3>
                 <p>Reparación de electrodomésticos para el hogar (licuadoras, microondas, etc.).</p>
             </div>
 
-            <!-- Tarjeta 2: Audio -->
             <div class="tarjeta">
                 <h3>🔊 Audio Clásico y Digital</h3>
                 <p>Sintoamplificadores, sistemas de sonido, equipos de música.</p>
             </div>
 
-            <!-- Tarjeta 3: CD y DVD -->
             <div class="tarjeta">
                 <h3>💿 Lectores y Reproductores</h3>
                 <p>Limpieza y reparación de reproductores de CD y DVD.</p>
             </div>
 
-            <!-- Tarjeta 4: Diagnóstico -->
             <div class="tarjeta">
                 <h3>⚙️ Diagnóstico Técnico</h3>
-                <p>Fallas eléctricas, motores, mechanisms.</p>
+                <p>Fallas eléctricas, motores, mecanismos.</p>
             </div>
         </div>
 
-        <!-- SECCIÓN AVANZADA: Seguimiento de Reparaciones -->
         <section class="contenedor-seguimiento">
             <h2>🔍 Seguimiento de tu Equipo</h2>
             <p>Ingresá tu número de orden para conocer el estado técnico de tu equipo en tiempo real.</p>
@@ -202,22 +200,19 @@
             <div id="resultado-seguimiento"></div>
         </section>
 
-        <!-- SECCIÓN: Guías Técnicas Desplegables Estilizadas -->
         <section class="contenedor-guias">
             <h2>📖 Guías de Reparación Rápida</h2>
             <p style="text-align: center; margin-bottom: 20px; color: #aaa;">Hacé clic en cada falla para conocer el diagnóstico técnico profesional.</p>
             
-            <!-- Guía 1 -->
             <details class="tarjeta-desplegable">
                 <summary>🎛️ Mi microondas enciende y gira, pero no calienta nada</summary>
                 <div class="contenido-desplegable">
                     <p>Es una de las consultas más frecuentes en nuestro taller de Mar del Plata. El usuario programa el tiempo, el plato gira, la luz se enciende, pero al retirar el alimento, este sigue completamente frío.</p>
                     <p><strong>¿Por qué ocurre esto?</strong> ⚡ El culpable suele estar en el <strong>circuito de alta tensión</strong>. Los microondas generan ondas de calor gracias al magnetrón, que trabaja con voltajes muy altos (cercanos a los 2000 V). Si el fusible de alta tensión se quema, el capacitor falla o el propio magnetrón se agota, el equipo funcionará visualmente, pero no tendrá energía para calentar.</p>
-                    <p><strong>¿Por qué es peligroso revisarlo en casa?</strong> ⚠️ A diferencia de otros electrodomésticos, el circuito de alta tensión almacena carga eléctrica peligrosa incluso cuando el microondas está deenchufado.</p>
+                    <p><strong>¿Por qué es peligroso revisarlo en casa?</strong> ⚠️ A diferencia de otros electrodomésticos, el circuito de alta tensión almacena carga eléctrica peligrosa incluso cuando el microondas está desenchufado.</p>
                 </div>
             </details>
 
-            <!-- Guía 2 -->
             <details class="tarjeta-desplegable">
                 <summary>🎆 Mi microondas hace chispas adentro (Efecto soplete)</summary>
                 <div class="contenido-desplegable">
@@ -227,7 +222,6 @@
                 </div>
             </details>
 
-            <!-- Guía 3 -->
             <details class="tarjeta-desplegable">
                 <summary>🔌 Mi microondas no enciende absolutamente nada (Pantalla apagada)</summary>
                 <div class="contenido-desplegable">
@@ -238,7 +232,6 @@
             </details>
         </section>
 
-        <!-- SECCIÓN: Buscador de Barrios Inteligente -->
         <section class="contenedor-buscador">
             <h2>🚚 Retiro a Domicilio</h2>
             <p>Ingresá tu barrio en Mar del Plata para conocer el costo de retiro y envío.</p>
@@ -261,11 +254,9 @@
             <div id="resultado-busqueda"></div>
         </section>
 
-        <!-- Botón único de contacto al final -->
         <a href="https://wa.me/5492234373563?text=%C2%A1Hola!%20Vi%20tu%20p%C3%A1gina%20web%20y%20quer%C3%ADa%20consultar%20por%20una%20reparaci%C3%B3n." class="btn-whatsapp" target="_blank">Pedir Presupuesto por WhatsApp 💬</a>
     </main>
 
-    <!-- PIE DE PÁGINA OBLIGATORIO PARA GOOGLE ADSENSE -->
     <footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid #4f4f4f;">
         <p style="color: #666; font-size: 14px;">&copy; 2026 reparacionesmdp. Todos los derechos reservados.</p>
         <a href="privacidad.html" style="color: #86c232; text-decoration: none; font-size: 14px; font-weight: bold;">Política de Privacidad</a>
@@ -315,19 +306,16 @@
 
             resultadoDiv.innerHTML = "<p style='color: #86c232;'>Buscando en el taller...</p>";
 
-            // Enlace de exportación CSV de tu planilla compartida
             const sheetId = '11rw1dNy9uiRQaxzmP53bXf6h3qolC-rZDqi-zww36Mg';
             const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
 
             fetch(url)
                 .then(response => response.text())
                 .then(data => {
-                    // Procesar las filas del CSV de forma sencilla
                     const filas = data.split('\n').map(fila => {
                         return fila.split(',').map(celda => celda.replace(/^"(.*)"$/, '$1'));
                     });
 
-                    // Buscar si alguna fila coincide con la orden (Columna A = Índice 0)
                     let encontrada = false;
                     for (let i = 1; i < filas.length; i++) {
                         if (filas[i][0] && filas[i][0].trim() === ordenBuscada) {
@@ -361,4 +349,5 @@
         });
     </script>
 </body>
-</html>
+    </html>
+    
