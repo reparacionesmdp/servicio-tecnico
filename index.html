@@ -94,7 +94,7 @@
 <body>
 
     <header>
-        <h1>Martin Pulcini Reparaciones</h1>
+        <h1>reparacionesmdp</h1>
         <p>Especialistas en la reparación de electrodomésticos, equipos de audio y reproductores. Servicio confiable en Mar del Plata. Consulte su presupuesto por WhatsApp.</p>
     </header>
 
@@ -119,7 +119,7 @@
 
             <div class="tarjeta">
                 <h3>⚙️ Diagnóstico Técnico</h3>
-                <p>Fallas eléctricas, motores, mechanisms.</p>
+                <p>Fallas eléctricas, motores, mecanismos.</p>
             </div>
         </div>
 
@@ -128,7 +128,7 @@
             <p>Ingresá tu número de orden para conocer el estado técnico de tu equipo en tiempo real.</p>
             
             <div class="formulario-consulta">
-                <input type="text" id="numero-orden" placeholder="Ej: 1001" autocomplete="off">
+                <input type="text" id="numero-orden" placeholder="Ej: 1002" autocomplete="off">
                 <button id="btn-consultar" class="btn-neon">Consultar Estado</button>
             </div>
 
@@ -192,25 +192,60 @@
             }
         });
 
-        // LÓGICA DE PRUEBA PARA EL SEGUIMIENTO NEÓN
+        // LÓGICA CONEXIÓN CON GOOGLE SHEETS
         document.getElementById('btn-consultar').addEventListener('click', function() {
-            const orden = document.getElementById('numero-orden').value.trim();
+            const ordenBuscada = document.getElementById('numero-orden').value.trim();
             const resultadoDiv = document.getElementById('resultado-seguimiento');
 
-            if (orden === "1001") {
-                resultadoDiv.innerHTML = `
-                    <div style="border: 1px solid #86c232; padding: 15px; background: #222;">
-                        <p><strong>Orden:</strong> #1001</p>
-                        <p><strong>Equipo:</strong> Microondas BGH</p>
-                        <p><strong>Estado:</strong> <span class="estado-alerta">⚡ EN DIAGNÓSTICO</span></p>
-                        <p style="font-size: 14px; color: #aaa; margin-top: 10px;">El técnico está revisando el circuito de alta tensión.</p>
-                    </div>
-                `;
-            } else if (orden === "") {
+            if (ordenBuscada === "") {
                 resultadoDiv.innerHTML = "<p style='color: #ff4444;'>Por favor, ingresá un número de orden.</p>";
-            } else {
-                resultadoDiv.innerHTML = "<p style='color: #ff4444;'>Orden no encontrada. Verificá el número.</p>";
+                return;
             }
+
+            resultadoDiv.innerHTML = "<p style='color: #86c232;'>Buscando en el taller...</p>";
+
+            // Enlace de exportación CSV de tu planilla compartida
+            const sheetId = '11rw1dNy9uiRQaxzmP53bXf6h3qolC-rZDqi-zww36Mg';
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
+
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    // Procesar las filas del CSV de forma sencilla
+                    const filas = data.split('\n').map(fila => {
+                        return fila.split(',').map(celda => celda.replace(/^"(.*)"$/, '$1'));
+                    });
+
+                    // Buscar si alguna fila coincide con la orden (Columna A = Índice 0)
+                    let encontrada = false;
+                    for (let i = 1; i < filas.length; i++) {
+                        if (filas[i][0] && filas[i][0].trim() === ordenBuscada) {
+                            const cliente = filas[i][1] || "N/D";
+                            const equipo = filas[i][2] || "N/D";
+                            const estado = filas[i][3] || "N/D";
+                            const detalle = filas[i][4] || "";
+
+                            resultadoDiv.innerHTML = `
+                                <div style="border: 1px solid #86c232; padding: 15px; background: #222; border-radius: 6px;">
+                                    <p><strong>Orden:</strong> #${ordenBuscada}</p>
+                                    <p><strong>Equipo:</strong> ${equipo}</p>
+                                    <p><strong>Estado:</strong> <span class="estado-alerta">⚡ ${estado.toUpperCase()}</span></p>
+                                    ${detalle ? `<p style="font-size: 14px; color: #aaa; margin-top: 10px;">${detalle}</p>` : ''}
+                                </div>
+                            `;
+                            encontrada = true;
+                            break;
+                        }
+                    }
+
+                    if (!encontrada) {
+                        resultadoDiv.innerHTML = "<p style='color: #ff4444;'>Orden no encontrada. Verificá el número anotado en tu planilla.</p>";
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                    resultadoDiv.innerHTML = "<p style='color: #ff4444;'>Error de conexión. Asegurate de que la planilla esté compartida con acceso general para cualquiera con el enlace.</p>";
+                });
         });
     </script>
 </body>
