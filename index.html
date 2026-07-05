@@ -154,6 +154,34 @@
         .contenido-desplegable p:last-child {
             margin-bottom: 0;
         }
+
+        /* Estilos específicos para el Botón Flotante de WhatsApp */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 15px #25d366;
+            text-decoration: none;
+            z-index: 1000;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px #25d366;
+        }
+
+        .whatsapp-icon {
+            font-size: 30px;
+        }
     </style>
 </head>
 <body>
@@ -184,7 +212,7 @@
 
             <div class="tarjeta">
                 <h3>⚙️ Diagnóstico Técnico</h3>
-                <p>Fallas eléctricas, motores, mecanismos.</p>
+                <p>Fallas eléctricas, motores, mechanisms.</p>
             </div>
         </div>
 
@@ -204,6 +232,26 @@
             <h2>📖 Guías de Reparación Rápida</h2>
             <p style="text-align: center; margin-bottom: 20px; color: #aaa;">Hacé clic en cada falla para conocer el diagnóstico técnico profesional.</p>
             
+            <!-- Nuevas Guías Solicitadas -->
+            <details class="tarjeta-desplegable">
+                <summary>⚡ Hornos Eléctricos: No calienta o no corta a tiempo</summary>
+                <div class="contenido-desplegable">
+                    <p>Los hornos eléctricos sufren un desgaste constante por la alta temperatura que manejan, lo que suele derivar en fallas eléctricas muy precisas.</p>
+                    <p><strong>¿Por qué ocurre esto?</strong> El problema principal suele ser el <strong>desgaste de las resistencias</strong> (que se cortan o pierden potencia), el <strong>cableado recalentado o quemado</strong> debido al consumo de amperes, o un desperfecto en el <strong>timer o temporizador</strong> mecánico que ya no vuelve a su posición original.</p>
+                    <p><strong>¿Cómo lo solucionamos?</strong> Reemplazamos los componentes defectuosos por repuestos de alta temperatura y reforzamos las conexiones críticas para evitar futuros recalentamientos.</p>
+                </div>
+            </details>
+
+            <details class="tarjeta-desplegable">
+                <summary>🔊 Parlantes Amplificados a Batería: No carga o no se escucha</summary>
+                <div class="contenido-desplegable">
+                    <p>Este tipo de equipos portátiles ingresan seguido al taller por problemas físicos causados por el uso diario o tirones de cables.</p>
+                    <p><strong>¿Por qué ocurre esto?</strong> La falla clásica es que el <strong>zócalo o pin de carga está suelto o desoldado</strong> de la placa madre. Esto genera que no encienda la luz de carga del panel. También trabajamos sobre fallas en las etapas de potencia cuando el equipo enciende pero <strong>no emite audio</strong>.</p>
+                    <p><strong>¿Tiene arreglo?</strong> Realizamos microsoldaduras de precisión para fijar o reemplazar el puerto de carga dañado y testeamos los amplificadores integrados de salida.</p>
+                </div>
+            </details>
+
+            <!-- Guías Anteriores -->
             <details class="tarjeta-desplegable">
                 <summary>🎛️ Mi microondas enciende y gira, pero no calienta nada</summary>
                 <div class="contenido-desplegable">
@@ -227,7 +275,7 @@
                 <div class="contenido-desplegable">
                     <p>Cuando el microondas no da ninguna señal de vida, la pantalla está completamente negra y no responde a ningún botón, el sistema entró en modo de protección térmica o eléctrica.</p>
                     <p><strong>¿Por qué ocurre esto?</strong> 🛑 La causa más frecuente es el <strong>fusible de entrada quemado</strong> debido a un cortocircuito interno (muchas veces provocado por un interruptor de puerta defectuoso). Otra causa común es la activación de los <strong>termostatos de seguridad</strong>, unos sensores que cortan la corriente por completo si el equipo detecta un sobrecalentamiento peligroso.</p>
-                    <p><strong>¿Cómo lo reparamos?</strong> 🛠️ En <strong>Martin Pulcini Reparaciones</strong> no reemplazamos el fusible a ciegas. Primero realizamos un diagnóstico  para encontrar la falla que provocó el corte, revisamos los microinterruptores de la puerta y limpiamos los conductos de ventilación antes de colocar repuestos nuevos y originales.</p>
+                    <p><strong>¿Cómo lo reparamos?</strong> 🛠️ En <strong>Martin Pulcini Reparaciones</strong> no reemplazamos el fusible a ciegas. Primero realizamos un diagnóstico para encontrar la falla que provocó el corte, revisamos los microinterruptores de la puerta y limpiamos los conductos de ventilación antes de colocar repuestos nuevos y originales.</p>
                 </div>
             </details>
         </section>
@@ -254,11 +302,14 @@
             <div id="resultado-busqueda"></div>
         </section>
 
-        <a href="https://wa.me/5492234373563?text=%C2%A1Hola!%20Vi%20tu%20p%C3%A1gina%20web%20y%20quer%C3%ADa%20consultar%20por%20una%20reparaci%C3%B3n." class="btn-whatsapp" target="_blank">Pedir Presupuesto por WhatsApp 💬</a>
+        <!-- Botón flotante de WhatsApp -->
+        <a href="https://wa.me/5492234373563?text=Hola%20Martín,%20vi%20tu%20web%20y%20quería%20consultarte%20por%20una%20reparación." class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+            <span class="whatsapp-icon">💬</span>
+        </a>
     </main>
 
     <footer style="text-align: center; padding: 20px; margin-top: 40px; border-top: 1px solid #4f4f4f;">
-        <p style="color: #666; font-size: 14px;">&copy; 2026 Martin Pulcini Reparaciónes. Todos los derechos reservados.</p>
+        <p style="color: #666; font-size: 14px;">&copy; 2026 Martin Pulcini Reparaciones. Todos los derechos reservados.</p>
         <a href="privacidad.html" style="color: #86c232; text-decoration: none; font-size: 14px; font-weight: bold;">Política de Privacidad</a>
     </footer>
 
@@ -349,5 +400,4 @@
         });
     </script>
 </body>
-    </html>
-    
+</html>
