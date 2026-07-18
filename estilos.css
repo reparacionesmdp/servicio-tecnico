@@ -43,14 +43,18 @@ header {
     align-items: center;
 }
 
+
 /* Estilos exclusivos para controlar el logo del Faro */
 .logo-sitio img {
-    width: 130px; /* Tamaño ideal y controlado para pantallas móviles */
-    height: 130px;
+    width: 180px; /* Aumentado de 130px a 180px para que se vea más grande */
+    height: 180px; /* Mantiene la misma altura para seguir siendo un círculo perfecto */
     border-radius: 50%; /* Fuerza la forma circular perfecta */
     margin-bottom: 15px; /* Separa el logo del título h1 */
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.5); /* Destello inicial cian neón */
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.6); /* Destello cian un poco más intenso */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
 }
 
 /* Animación sutil cuando el usuario interactúa con el logo */
