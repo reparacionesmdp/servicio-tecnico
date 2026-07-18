@@ -44,14 +44,32 @@ header {
 }
 
 
-/* Estilos exclusivos para controlar el logo del Faro */
+/* La "ventana" redonda que controla el tamaño exterior */
+.logo-sitio {
+    width: 160px; /* Tamaño del círculo en la pantalla */
+    height: 160px;
+    border-radius: 50%; /* Lo hace perfectamente redondo */
+    overflow: hidden; /* ✂️ Recorta los bordes negros sobrantes de la imagen */
+    margin-bottom: 15px;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.6); /* El destello neón */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* La imagen adentro que escalamos para hacer el zoom */
 .logo-sitio img {
-    width: 180px; /* Aumentado de 130px a 180px para que se vea más grande */
-    height: 180px; /* Mantiene la misma altura para seguir siendo un círculo perfecto */
-    border-radius: 50%; /* Fuerza la forma circular perfecta */
-    margin-bottom: 15px; /* Separa el logo del título h1 */
-    box-shadow: 0 0 20px rgba(0, 242, 254, 0.6); /* Destello cian un poco más intenso */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 140%; /* Agrandamos la imagen un 40% más que la ventana para hacer zoom */
+    height: 140%;
+    object-fit: cover; /* Mantiene la proporción del faro sin deformarlo */
+    transition: transform 0.3s ease;
+}
+
+/* Animación sutil al pasar el cursor por el logo */
+.logo-sitio img:hover {
+    transform: scale(1.1); /* Hace un pequeño zoom extra interactivo */
+}
+
 }
 
 
