@@ -256,3 +256,639 @@ main h2 {
     color: #000000;
     box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
 }
+/* ================= COMO TRABAJAMOS ================= */
+
+
+.como-trabajamos {
+
+
+    margin-top:40px;
+
+
+    padding:25px;
+
+
+    background:var(--fondo-tarjeta);
+
+
+    border:1px solid var(--borde);
+
+
+    border-radius:15px;
+
+
+}
+
+
+
+.pasos {
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(180px,1fr));
+
+
+    gap:20px;
+
+
+    margin-top:20px;
+
+
+}
+
+
+
+.pasos div {
+
+
+    padding:20px;
+
+
+    border-left:
+
+    3px solid var(--cian);
+
+
+    background:#0d131f;
+
+
+}
+
+
+
+.pasos strong {
+
+
+    color:var(--cian);
+
+
+}
+
+
+
+
+/* ================= SEGUIMIENTO ================= */
+
+
+.contenedor-seguimiento,
+
+
+.contenedor-buscador,
+
+
+.contenedor-guias,
+
+
+.opiniones,
+
+
+.faq {
+
+
+    margin-top:40px;
+
+
+    padding:30px;
+
+
+    background:
+
+    var(--fondo-tarjeta);
+
+
+    border-radius:15px;
+
+
+    border:
+
+    1px solid var(--borde);
+
+
+    box-shadow:
+
+    0 0 20px rgba(0,242,254,.08);
+
+
+}
+
+
+
+
+
+/* FORMULARIOS */
+
+
+.formulario-consulta {
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    flex-wrap:wrap;
+
+
+    gap:15px;
+
+
+    margin-top:25px;
+
+
+}
+
+
+
+input {
+
+
+    background:#080b12;
+
+
+    color:white;
+
+
+    border:
+
+    2px solid rgba(0,242,254,.3);
+
+
+    border-radius:8px;
+
+
+    padding:14px;
+
+
+    font-size:16px;
+
+
+    width:100%;
+
+
+    max-width:400px;
+
+
+}
+
+
+
+input:focus {
+
+
+    outline:none;
+
+
+    border-color:var(--cian);
+
+
+    box-shadow:
+
+    0 0 15px rgba(0,242,254,.4);
+
+
+}
+
+
+
+
+.btn-neon {
+
+
+    background:transparent;
+
+
+    color:var(--cian);
+
+
+    border:
+
+    2px solid var(--cian);
+
+
+    padding:12px 25px;
+
+
+    border-radius:8px;
+
+
+    cursor:pointer;
+
+
+    font-weight:bold;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.btn-neon:hover {
+
+
+    background:var(--cian);
+
+
+    color:#000;
+
+
+    box-shadow:
+
+    0 0 25px var(--cian);
+
+
+}
+
+
+
+
+
+/* ================= GUIAS ================= */
+
+
+.tarjeta-desplegable {
+
+
+    background:#0d131f;
+
+
+    margin:15px 0;
+
+
+    border-radius:10px;
+
+
+    border-left:
+
+    4px solid var(--cian);
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+.tarjeta-desplegable summary {
+
+
+    cursor:pointer;
+
+
+    padding:18px;
+
+
+    font-weight:bold;
+
+
+    color:white;
+
+
+}
+
+
+
+.tarjeta-desplegable summary:hover {
+
+
+    color:var(--cian);
+
+
+}
+
+
+
+.contenido-desplegable {
+
+
+    padding:0 20px 20px;
+
+
+    color:var(--gris);
+
+
+}
+
+
+
+
+/* ================= OPINIONES ================= */
+
+
+.grid-opiniones {
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(220px,1fr));
+
+
+    gap:20px;
+
+
+}
+
+
+
+.opinion {
+
+
+    background:#0d131f;
+
+
+    padding:20px;
+
+
+    border-radius:10px;
+
+
+    border:
+
+    1px solid rgba(79,172,254,.2);
+
+
+}
+
+
+
+.opinion p {
+
+
+    color:var(--gris);
+
+
+}
+
+
+
+.opinion strong {
+
+
+    color:var(--cian);
+
+
+}
+
+
+
+
+
+/* ================= FAQ ================= */
+
+
+.faq details {
+
+
+    background:#0d131f;
+
+
+    margin:12px 0;
+
+
+    padding:15px;
+
+
+    border-radius:8px;
+
+
+}
+
+
+
+.faq summary {
+
+
+    cursor:pointer;
+
+
+    font-weight:bold;
+
+
+    color:var(--cian);
+
+
+}
+
+
+
+
+
+/* ================= WHATSAPP FLOTANTE ================= */
+
+
+.whatsapp-btn {
+
+
+    position:fixed;
+
+
+    right:25px;
+
+
+    bottom:25px;
+
+
+    width:65px;
+
+
+    height:65px;
+
+
+    border-radius:50%;
+
+
+    background:var(--verde-wsp);
+
+
+    color:white;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    font-size:32px;
+
+
+    text-decoration:none;
+
+
+    box-shadow:
+
+    0 0 25px var(--verde-wsp);
+
+
+    z-index:1000;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.whatsapp-btn:hover {
+
+
+    transform:scale(1.12);
+
+
+}
+
+
+
+
+
+/* ================= FOOTER ================= */
+
+
+footer {
+
+
+    width:100%;
+
+
+    max-width:900px;
+
+
+    text-align:center;
+
+
+    margin-top:50px;
+
+
+    padding:25px;
+
+
+    border-top:
+
+    1px solid #333;
+
+
+    color:#777;
+
+
+}
+
+
+
+footer a {
+
+
+    color:var(--cian);
+
+
+    text-decoration:none;
+
+
+}
+
+
+
+
+
+/* TEXTO SOLO PARA LECTORES DE PANTALLA */
+
+
+.sr-only {
+
+
+    position:absolute;
+
+
+    width:1px;
+
+
+    height:1px;
+
+
+    padding:0;
+
+
+    overflow:hidden;
+
+
+    clip:rect(0,0,0,0);
+
+
+    white-space:nowrap;
+
+
+    border:0;
+
+
+}
+
+
+
+
+
+/* ================= CELULARES ================= */
+
+
+@media(max-width:600px){
+
+
+    body {
+
+
+        padding:12px;
+
+    }
+
+
+    .header-contenedor {
+
+
+        padding:25px 15px;
+
+    }
+
+
+    .contenedor-seguimiento,
+
+    .contenedor-buscador,
+
+    .contenedor-guias,
+
+    .opiniones,
+
+    .faq {
+
+
+        padding:20px;
+
+    }
+
+
+    .whatsapp-btn {
+
+
+        width:58px;
+
+        height:58px;
+
+        right:15px;
+
+        bottom:15px;
+
+    }
+
+
+}
