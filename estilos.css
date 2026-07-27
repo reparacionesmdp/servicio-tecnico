@@ -1029,3 +1029,75 @@ width:35px;
 height:auto;
 
 }
+/*=========================
+   ACCESORIOS
+==========================*/
+
+.contenedor-accesorios{
+    margin:40px 0;
+    background:#12121a;
+    border:2px solid #00f2fe;
+    border-radius:12px;
+    padding:30px;
+}
+
+.texto-accesorios{
+    text-align:center;
+    color:#cfcfcf;
+    margin-bottom:25px;
+}
+
+.tarjeta-accesorio{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    align-items:center;
+    background:#1a1a1a;
+    border-radius:10px;
+    padding:20px;
+    border:1px solid rgba(0,242,254,.2);
+}
+
+.foto-accesorio{
+    width:180px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,242,254,.25);
+}
+
+.info-accesorio{
+    flex:1;
+}
+
+.info-accesorio h3{
+    color:#00f2fe;
+    margin-top:0;
+}
+
+.boton-meli{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:#ffe600;
+    color:#333;
+    padding:12px 22px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    margin-top:15px;
+    transition:.3s;
+}
+
+.boton-meli:hover{
+    transform:scale(1.05);
+}
+
+.boton-meli img{
+    width:28px;
+    height:28px;
+}
+
+.nota-afiliado{
+    font-size:.85rem;
+    color:#9d9d9d;
+    margin-top:15px;
+}
