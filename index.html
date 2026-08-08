@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="BxiOUuiPIOZu2hXbSmBvyCVtGQOZ8QXtcdwHDK_T260" />
     <meta name="description"
-content="Servicio técnico en Mar del Plata. Reparación de microondas, hornos eléctricos, equipos de audio, parlantes Bluetooth y reproductores.">
-    <meta name="keywords" content="reparación de microondas en Mar del Plata, servicio técnico de microondas, reparación de hornos eléctricos, reparación de equipos de audio, parlantes Bluetooth, reproductores de CD y DVD, Martín Pulcini Reparaciones">
+content="Servicio técnico en Mar del Plata. Reparación de microondas, hornos eléctricos, equipos de audio, parlantes Bluetooth y reproductores de CD y dvd.">
+    <meta name="keywords" content="servicio técnico de microondas, hornos eléctricos, reparación equipos de audio, parlantes Bluetooth, reproductores CD DVD, Martín Pulcini Reparaciones">
     <meta property="og:title" content="Martín Pulcini Reparaciones">
 
 <meta property="og:description" content="Servicio técnico de microondas, hornos eléctricos, equipos de audio y parlantes Bluetooth en Mar del Plata.">
@@ -298,7 +297,7 @@ content="Servicio técnico en Mar del Plata. Reparación de microondas, hornos e
             <img src="imagen/logo-faro.png" alt="Martin Pulcini Reparaciones - Faro Neón">
         </div>
         <h1>Martin Pulcini Reparaciones</h1>
-        <p>Especializado en la reparación de electrodomésticos, equipos de audio. Servicio tecnico en Mar del Plata. Consulte su presupuesto por WhatsApp.</p>
+        <p>Especializados en la reparación de electrodomésticos, equipos de audio y reproductores. Servicio confiable en Mar del Plata. Consulte su presupuesto por WhatsApp.</p>
     </header>
 
     <main>
@@ -307,12 +306,22 @@ content="Servicio técnico en Mar del Plata. Reparación de microondas, hornos e
         <div class="grid-servicios">
             <div class="tarjeta">
                 <h3>🏠 Línea Blanca y Hogar</h3>
-                <p>Reparación de electrodomésticos para el hogar ( microondas, hornos electricos,maquinas para hacer panes,etc.).</p>
+                <p>Reparación de electrodomésticos para el hogar (licuadoras, microondas, etc.).</p>
+            </div>
+
+            <div class="tarjeta">
+                <h3>🔊 Audio Clásico y Digital</h3>
+                <p>Sintoamplificadores, sistemas de sonido, equipos de música.</p>
+            </div>
+
+            <div class="tarjeta">
+                <h3>💿 Lectores y Reproductores</h3>
+                <p>Limpieza y reparación de reproductores de CD y DVD.</p>
             </div>
 
             <div class="tarjeta">
                 <h3>⚙️ Diagnóstico Técnico</h3>
-                <p>Fallas eléctricas, fallas de etapa de carga en parlantes inhalámbricos.</p>
+                <p>Fallas eléctricas, motores, mecanismos.</p>
             </div>
         </div>
 
@@ -327,6 +336,34 @@ content="Servicio técnico en Mar del Plata. Reparación de microondas, hornos e
             </div>
 
             <div id="resultado-seguimiento"></div>
+        </section>
+
+        <!-- Sección Accesorios Recomendados -->
+        <section class="contenedor-accesorios">
+            <h2>🛒 Accesorios Recomendados</h2>
+
+            <p class="texto-accesorios">
+                Estos accesorios son productos que recomiendo por su calidad y compatibilidad.
+                Si comprás desde estos enlaces colaborás con el mantenimiento de esta página web sin pagar un peso más.
+            </p>
+
+            <div class="tarjeta-accesorio">
+                <img src="imagen/plato-microondas-245cm.jpg" alt="Plato para microondas universal" class="foto-accesorio">
+
+                <div class="info-accesorio">
+                    <h3>🍽️ Plato para Microondas Universal 24,5 cm</h3>
+                    <p>Plato de vidrio templado de 24,5 cm compatible con gran cantidad de hornos microondas.</p>
+
+                    <a href="https://meli.la/266WDsL" target="_blank" rel="nofollow sponsored noopener" class="boton-meli">
+                        <img src="imagen/mercadolibre.png" alt="Mercado Libre">
+                        Comprar en Mercado Libre
+                    </a>
+
+                    <p class="nota-afiliado">
+                        
+                    </p>
+                </div>
+            </div>
         </section>
 
         <!-- Sección Guías -->
@@ -445,61 +482,4 @@ content="Servicio técnico en Mar del Plata. Reparación de microondas, hornos e
             }
         });
 
-        // LÓGICA CONEXIÓN CON GOOGLE SHEETS (COLUMNAS DE LA PLANILLA NUEVA)
-        document.getElementById('btn-consultar').addEventListener('click', function() {
-            const ordenBuscada = document.getElementById('numero-orden').value.trim();
-            const resultadoDiv = document.getElementById('resultado-seguimiento');
-
-            if (ordenBuscada === "") {
-                resultadoDiv.innerHTML = "<p style='color: #ff4444;'>Por favor, ingresá un número de orden.</p>";
-                return;
-            }
-
-            resultadoDiv.innerHTML = "<p style='color: #86c232;'>Buscando en el taller...</p>";
-
-            const sheetId = '11rw1dNy9uiRQaxzmP53bXf6h3qolC-rZDqi-zww36Mg';
-            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv`;
-
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    const filas = data.split('\n').map(fila => {
-                        return fila.split(',').map(celda => celda.replace(/^"(.*)"$/, '$1'));
-                    });
-
-                    let encontrada = false;
-                    for (let i = 1; i < filas.length; i++) {
-                        if (filas[i][0] && filas[i][0].trim() === ordenBuscada) {
-                            const cliente = filas[i][1] || "N/D";
-                            const equipo = filas[i][3] || "N/D";
-                            const falla = filas[i][4] || "";
-                            const presupuesto = filas[i][5] || "";
-                            const estado = filas[i][6] || "N/D";
-
-                            resultadoDiv.innerHTML = `
-                                <div style="border: 1px solid #86c232; padding: 15px; background: #222; border-radius: 6px; text-align: left;">
-                                    <p><strong>Orden:</strong> #${ordenBuscada}</p>
-                                    <p><strong>Cliente:</strong> ${cliente}</p>
-                                    <p><strong>Equipo:</strong> ${equipo}</p>
-                                    ${falla ? `<p><strong>Falla declarada:</strong> ${falla}</p>` : ''}
-                                    ${presupuesto ? `<p><strong>Presupuesto:</strong> ${presupuesto}</p>` : ''}
-                                    <p><strong>Estado:</strong> <span class="estado-alerta">⚡ ${estado.toUpperCase()}</span></p>
-                                </div>
-                            `;
-                            encontrada = true;
-                            break;
-                        }
-                    }
-
-                    if (!encontrada) {
-                        resultadoDiv.innerHTML = "<p style='color: #ff4444;'>Orden no encontrada. Verificá el número anotado en tu planilla.</p>";
-                    }
-                })
-                .catch(error => {
-                    console.error(error);
-                    resultadoDiv.innerHTML = "<p style='color: #ff4444;'>Error de conexión. Asegurate de que la planilla esté compartida con acceso general para cualquiera con el enlace.</p>";
-                });
-        });
-    </script>
-</body>
-</html>
+       
