@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+1@1<!DOCTYPE html>
 <html lang="es">
 <head>
     
@@ -563,14 +563,72 @@
             }
         });
 
-        // ==========================================
+                // ==========================================
         // ASISTENTE TÉCNICO
         // ==========================================
 
         const catalogoAsistente = {
             microondas: [
                 {
-                    nombre: "Accesorios para microondas",
-                    descripcion: "Platos, Tapas, Tupper.",
-                    enlace: "https://www.google.com/search?q=accesorios+para+microondas"
-                
+                    nombre: "Platos y Tapas para Microondas",
+                    descripcion: "Encontrá platos giratorios y tapas protectoras en Mercado Libre.",
+                    enlace: "https://listado.mercadolibre.com.ar/plato-para-microondas"
+                }
+            ],
+            audio: [
+                {
+                    nombre: "Cables y Conectores de Audio",
+                    descripcion: "Adaptadores, fichas y cables para equipos de música.",
+                    enlace: "https://listado.mercadolibre.com.ar/cables-audio-conectores"
+                }
+            ],
+            bluetooth: [
+                {
+                    nombre: "Cargadores y Baterías para Parlantes",
+                    descripcion: "Fuentes de alimentación y repuestos para parlantes portátiles.",
+                    enlace: "https://listado.mercadolibre.com.ar/cargador-parlante-bluetooth"
+                }
+            ],
+            hornos: [
+                {
+                    nombre: "Resistencias y Accesorios para Hornos",
+                    descripcion: "Repuestos y bandejas para hornos eléctricos.",
+                    enlace: "https://listado.mercadolibre.com.ar/accesorios-horno-electrico"
+                }
+            ]
+        };
+
+        // ... (Tu función analizarConsulta se mantiene igual) ...
+
+        function mostrarRespuestaAsistente(resultado) {
+            const chat = document.getElementById("chat-ia");
+
+            const mensaje = document.createElement("div");
+            mensaje.className = "mensaje-ia";
+            mensaje.innerHTML = resultado.texto;
+            chat.appendChild(mensaje);
+
+            if (resultado.productos && resultado.productos.length > 0) {
+                resultado.productos.forEach(producto => {
+                    const tarjeta = document.createElement("div");
+                    tarjeta.style.background = "#151515";
+                    tarjeta.style.border = "1px solid #333";
+                    tarjeta.style.borderRadius = "8px";
+                    tarjeta.style.padding = "15px";
+                    tarjeta.style.marginTop = "10px";
+
+                    tarjeta.innerHTML = `
+                        <strong style="color:#00bcd4;">${producto.nombre}</strong>
+                        <p style="color:#ccc; font-size:14px; margin:8px 0;">${producto.descripcion}</p>
+                        <a href="${producto.enlace}" target="_blank" rel="noopener noreferrer" class="boton-meli">
+                            💛 Ver en Mercado Libre
+                        </a>
+                    `;
+                    chat.appendChild(tarjeta);
+                });
+            }
+
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        // ... (El resto de las funciones enviarConsultaIA y los eventListeners se mantienen igual)
