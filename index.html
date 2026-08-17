@@ -563,8 +563,8 @@
             }
         });
 
-                // ==========================================
-        // ASISTENTE TÉCNICO
+                        // ==========================================
+        // ASISTENTE TÉCNICO Y PALABRAS CLAVE
         // ==========================================
 
         const catalogoAsistente = {
@@ -598,7 +598,27 @@
             ]
         };
 
-        // ... (Tu función analizarConsulta se mantiene igual) ...
+        function analizarConsulta(texto) {
+            const t = texto.toLowerCase().trim();
+            
+            if (t.includes('microondas') || t.includes('plato')) {
+                return { texto: "Aquí tenés accesorios para microondas:", productos: catalogoAsistente.microondas };
+            }
+            if (t.includes('audio') || t.includes('cable') || t.includes('música')) {
+                return { texto: "Encontré componentes de audio:", productos: catalogoAsistente.audio };
+            }
+            if (t.includes('bluetooth') || t.includes('cargador') || t.includes('parlante')) {
+                return { texto: "Accesorios para parlantes Bluetooth:", productos: catalogoAsistente.bluetooth };
+            }
+            if (t.includes('horno') || t.includes('resistencia')) {
+                return { texto: "Repuestos para hornos eléctricos:", productos: catalogoAsistente.hornos };
+            }
+            
+            return { 
+                texto: "Entiendo. ¿Podrías indicarme si tu consulta es sobre microondas, audio, parlantes Bluetooth u hornos?", 
+                productos: [] 
+            };
+        }
 
         function mostrarRespuestaAsistente(resultado) {
             const chat = document.getElementById("chat-ia");
@@ -631,4 +651,28 @@
             chat.scrollTop = chat.scrollHeight;
         }
 
-        // ... (El resto de las funciones enviarConsultaIA y los eventListeners se mantienen igual)
+        function enviarConsultaIA() {
+            const campoInput = document.getElementById("mensaje-usuario");
+            const texto = campoInput.value;
+            if (!texto.trim()) return;
+
+            const chat = document.getElementById("chat-ia");
+            const msgUser = document.createElement("div");
+            msgUser.className = "mensaje-usuario";
+            msgUser.textContent = texto;
+            chat.appendChild(msgUser);
+
+            const respuesta = analizarConsulta(texto);
+            mostrarRespuestaAsistente(respuesta);
+
+            campoInput.value = "";
+        }
+
+        // Eventos para el funcionamiento del chat
+        document.getElementById("enviar-ia").addEventListener("click", enviarConsultaIA);
+
+        document.getElementById("mensaje-usuario").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                enviarConsultaIA();
+            }
+        });
