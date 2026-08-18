@@ -532,134 +532,62 @@
     </footer>
 
     <script>
-    // LÓGICA DEL BUSCADOR DE BARRIOS
-    const preciosBarrios = {
-        "centro": 5000, "parque luro": 5000, "san jose": 5000, "san josé": 5000,
-        "don bosco": 5000, "villa primera": 5000, "la perla": 7000, "libertad": 7000,
-        "los troncos": 10000, "constitucion": 10000, "constitución": 10000, "alfar": 10000
-    };
-
-    const inputBarrios = document.getElementById('buscador-barrios');
-    if (inputBarrios) {
-        inputBarrios.addEventListener('input', function(e) {
-            const busqueda = e.target.value.toLowerCase().trim();
-            const resultadoDiv = document.getElementById('resultado-busqueda');
-            
-            if (busqueda === "") {
-                resultadoDiv.innerHTML = "";
-                return;
-            }
-
-            if (preciosBarrios.hasOwnProperty(busqueda)) {
-                const precio = preciosBarrios[busqueda];
-                resultadoDiv.innerHTML = `
-                    <p class="precio-neon">Costo de retiro para Barrio ${busqueda.toUpperCase()}: $${precio.toLocaleString('es-AR')}</p>
-                    <div class="info-nota">⚠️ <strong>Nota importante:</strong> El costo del retiro incluye la elaboración del presupuesto y el reenvío del equipo a tu domicilio, incluso si decidís no aceptar el presupuesto final.</div>
-                `;
-            } else {
-                const mensajeWA = encodeURIComponent(`¡Hola! Mi barrio (${e.target.value.toUpperCase()}) no aparece en la lista. Quiero consultar el costo de retiro a domicilio.`);
-                resultadoDiv.innerHTML = `
-                    <p class="error-busqueda">El barrio no está en la lista de precios fijos.</p>
-                    <a href="https://wa.me/5492234373563?text=${mensajeWA}" class="btn-whatsapp-dinamico" target="_blank">Consultar por WhatsApp 💬</a>
-                `;
-            }
-        });
-    }
-
-    // ==========================================
-    // ASISTENTE TÉCNICO Y PALABRAS CLAVE
-    // ==========================================
     document.addEventListener("DOMContentLoaded", function() {
-        const catalogoAsistente = {
-            microondas: [
-                {
-                    nombre: "Platos y Tapas para Microondas",
-                    descripcion: "Encontrá platos giratorios y tapas protectoras en Mercado Libre.",
-                    enlace: "https://listado.mercadolibre.com.ar/plato-para-microondas"
-                }
-            ],
-            audio: [
-                {
-                    nombre: "Cables y Conectores de Audio",
-                    descripcion: "Adaptadores, fichas y cables para equipos de música.",
-                    enlace: "https://listado.mercadolibre.com.ar/cables-audio-conectores"
-                }
-            ],
-            bluetooth: [
-                {
-                    nombre: "Cargadores y Baterías para Parlantes",
-                    descripcion: "Fuentes de alimentación y repuestos para parlantes portátiles.",
-                    enlace: "https://listado.mercadolibre.com.ar/cargador-parlante-bluetooth"
-                }
-            ],
-            hornos: [
-                {
-                    nombre: "Resistencias y Accesorios para Hornos",
-                    descripcion: "Repuestos y bandejas para hornos eléctricos.",
-                    enlace: "https://listado.mercadolibre.com.ar/accesorios-horno-electrico"
-                }
-            ]
-        };
 
+        // Función para generar el enlace de WhatsApp
+        function obtenerLinkWhatsApp(aparato) {
+            const numero = "5492234373563";
+            const texto = encodeURIComponent(`Hola, necesito reparar un ${aparato}`);
+            return `https://wa.me/${numero}?text=${texto}`;
+        }
+
+        // Analiza el input y determina el aparato
         function analizarConsulta(texto) {
             const t = texto.toLowerCase().trim();
-            
-            if (t.includes('microondas') || t.includes('plato')) {
-                return { texto: "Aquí tenés accesorios para microondas:", productos: catalogoAsistente.microondas };
-            }
-            if (t.includes('audio') || t.includes('cable') || t.includes('música')) {
-                return { texto: "Encontré componentes de audio:", productos: catalogoAsistente.audio };
-            }
-            if (t.includes('bluetooth') || t.includes('cargador') || t.includes('parlante')) {
-                return { texto: "Accesorios para parlantes Bluetooth:", productos: catalogoAsistente.bluetooth };
-            }
-            if (t.includes('horno') || t.includes('resistencia')) {
-                return { texto: "Repuestos para hornos eléctricos:", productos: catalogoAsistente.hornos };
-            }
-            
-            return { 
-                texto: "Entiendo. ¿Podrías indicarme si tu consulta es sobre microondas, audio, parlantes Bluetooth u hornos?", 
-                productos: [] 
+            let aparato = "";
+
+            if (t.includes('microondas')) { aparato = "microondas"; }
+            else if (t.includes('audio') || t.includes('música')) { aparato = "equipo de audio"; }
+            else if (t.includes('bluetooth') || t.includes('parlante')) { aparato = "parlante Bluetooth"; }
+            else if (t.includes('horno')) { aparato = "horno eléctrico"; }
+            else { aparato = t; } 
+
+            return {
+                mensaje: `Entendido. Para ${aparato}, lo mejor es que lo veamos personalmente.`,
+                aparato: aparato
             };
         }
 
-        function mostrarRespuestaAsistente(resultado) {
+        // Crea y muestra la respuesta en el chat
+        function mostrarRespuesta(resultado) {
             const chat = document.getElementById("chat-ia");
             if (!chat) return;
 
-            const mensaje = document.createElement("div");
-            mensaje.className = "mensaje-ia";
-            mensaje.innerHTML = resultado.texto;
-            chat.appendChild(mensaje);
+            const divTexto = document.createElement("div");
+            divTexto.className = "mensaje-ia";
+            divTexto.textContent = resultado.mensaje;
+            chat.appendChild(divTexto);
 
-            if (resultado.productos && resultado.productos.length > 0) {
-                resultado.productos.forEach(producto => {
-                    const tarjeta = document.createElement("div");
-                    tarjeta.style.background = "#151515";
-                    tarjeta.style.border = "1px solid #333";
-                    tarjeta.style.borderRadius = "8px";
-                    tarjeta.style.padding = "15px";
-                    tarjeta.style.marginTop = "10px";
-
-                    tarjeta.innerHTML = `
-                        <strong style="color:#00bcd4;">${producto.nombre}</strong>
-                        <p style="color:#ccc; font-size:14px; margin:8px 0;">${producto.descripcion}</p>
-                        <a href="${producto.enlace}" target="_blank" rel="noopener noreferrer" class="boton-meli">
-                            💛 Ver en Mercado Libre
-                        </a>
-                    `;
-                    chat.appendChild(tarjeta);
-                });
-            }
-
+            const linkWA = obtenerLinkWhatsApp(resultado.aparato);
+            const btnWA = document.createElement("a");
+            btnWA.href = linkWA;
+            btnWA.target = "_blank";
+            btnWA.className = "boton-meli"; // Mantenemos tu clase de estilo actual
+            btnWA.style.display = "block";
+            btnWA.style.marginTop = "10px";
+            btnWA.style.textAlign = "center";
+            btnWA.innerHTML = "💬 Enviar consulta por WhatsApp";
+            
+            chat.appendChild(btnWA);
             chat.scrollTop = chat.scrollHeight;
         }
 
-        function enviarConsultaIA() {
-            const campoInput = document.getElementById("mensaje-usuario");
-            if (!campoInput) return;
-            
-            const texto = campoInput.value;
+        // Manejo del evento de envío
+        const btnEnviar = document.getElementById("enviar-ia");
+        const inputUsuario = document.getElementById("mensaje-usuario");
+
+        function procesarEnvio() {
+            const texto = inputUsuario.value;
             if (!texto.trim()) return;
 
             const chat = document.getElementById("chat-ia");
@@ -668,24 +596,18 @@
             msgUser.textContent = texto;
             chat.appendChild(msgUser);
 
-            const respuesta = analizarConsulta(texto);
-            mostrarRespuestaAsistente(respuesta);
+            const resultado = analizarConsulta(texto);
+            mostrarRespuesta(resultado);
 
-            campoInput.value = "";
+            inputUsuario.value = "";
         }
 
-        const btnEnviar = document.getElementById("enviar-ia");
-        const inputUsuario = document.getElementById("mensaje-usuario");
-
-        if (btnEnviar) {
-            btnEnviar.addEventListener("click", enviarConsultaIA);
-        }
-
+        if (btnEnviar) btnEnviar.addEventListener("click", procesarEnvio);
+        
+        // Permite enviar presionando "Enter"
         if (inputUsuario) {
             inputUsuario.addEventListener("keypress", function(e) {
-                if (e.key === "Enter") {
-                    enviarConsultaIA();
-                }
+                if (e.key === "Enter") procesarEnvio();
             });
         }
     });
