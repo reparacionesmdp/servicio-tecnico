@@ -532,14 +532,16 @@
     </footer>
 
     <script>
-        // LÓGICA DEL BUSCADOR DE BARRIOS
-        const preciosBarrios = {
-            "centro": 5000, "parque luro": 5000, "san jose": 5000, "san josé": 5000,
-            "don bosco": 5000, "villa primera": 5000, "la perla": 7000, "libertad": 7000,
-            "los troncos": 10000, "constitucion": 10000, "constitución": 10000, "alfar": 10000
-        };
+    // LÓGICA DEL BUSCADOR DE BARRIOS
+    const preciosBarrios = {
+        "centro": 5000, "parque luro": 5000, "san jose": 5000, "san josé": 5000,
+        "don bosco": 5000, "villa primera": 5000, "la perla": 7000, "libertad": 7000,
+        "los troncos": 10000, "constitucion": 10000, "constitución": 10000, "alfar": 10000
+    };
 
-        document.getElementById('buscador-barrios').addEventListener('input', function(e) {
+    const inputBarrios = document.getElementById('buscador-barrios');
+    if (inputBarrios) {
+        inputBarrios.addEventListener('input', function(e) {
             const busqueda = e.target.value.toLowerCase().trim();
             const resultadoDiv = document.getElementById('resultado-busqueda');
             
@@ -562,11 +564,12 @@
                 `;
             }
         });
+    }
 
-                        // ==========================================
-        // ASISTENTE TÉCNICO Y PALABRAS CLAVE
-        // ==========================================
-
+    // ==========================================
+    // ASISTENTE TÉCNICO Y PALABRAS CLAVE
+    // ==========================================
+    document.addEventListener("DOMContentLoaded", function() {
         const catalogoAsistente = {
             microondas: [
                 {
@@ -622,6 +625,7 @@
 
         function mostrarRespuestaAsistente(resultado) {
             const chat = document.getElementById("chat-ia");
+            if (!chat) return;
 
             const mensaje = document.createElement("div");
             mensaje.className = "mensaje-ia";
@@ -653,6 +657,8 @@
 
         function enviarConsultaIA() {
             const campoInput = document.getElementById("mensaje-usuario");
+            if (!campoInput) return;
+            
             const texto = campoInput.value;
             if (!texto.trim()) return;
 
@@ -668,11 +674,19 @@
             campoInput.value = "";
         }
 
-        // Eventos para el funcionamiento del chat
-        document.getElementById("enviar-ia").addEventListener("click", enviarConsultaIA);
+        const btnEnviar = document.getElementById("enviar-ia");
+        const inputUsuario = document.getElementById("mensaje-usuario");
 
-        document.getElementById("mensaje-usuario").addEventListener("keypress", function(e) {
-            if (e.key === "Enter") {
-                enviarConsultaIA();
-            }
-        });
+        if (btnEnviar) {
+            btnEnviar.addEventListener("click", enviarConsultaIA);
+        }
+
+        if (inputUsuario) {
+            inputUsuario.addEventListener("keypress", function(e) {
+                if (e.key === "Enter") {
+                    enviarConsultaIA();
+                }
+            });
+        }
+    });
+</script>
