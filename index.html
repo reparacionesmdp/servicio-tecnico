@@ -510,82 +510,47 @@
 
     <script>
     document.addEventListener("DOMContentLoaded", function() {
+        const chat = document.getElementById("chat-ia");
+        const numero = "5492234373563";
 
-        // Función para generar el enlace de WhatsApp
-        function obtenerLinkWhatsApp(aparato) {
-            const numero = "5492234373563";
+        // Función para enviar mensaje a WhatsApp
+        function generarLinkWhatsApp(aparato) {
             const texto = encodeURIComponent(`Hola, necesito reparar un ${aparato}`);
             return `https://wa.me/${numero}?text=${texto}`;
         }
 
-        // Analiza el input y determina el aparato
-        function analizarConsulta(texto) {
-            const t = texto.toLowerCase().trim();
-            let aparato = "";
+        // Crear contenedor de botones
+        const divBotones = document.createElement("div");
+        divBotones.style.display = "grid";
+        divBotones.style.gap = "10px";
+        divBotones.style.marginTop = "15px";
 
-            if (t.includes('microondas')) { aparato = "microondas"; }
-            else if (t.includes('audio') || t.includes('música')) { aparato = "equipo de audio"; }
-            else if (t.includes('bluetooth') || t.includes('parlante')) { aparato = "parlante Bluetooth"; }
-            else if (t.includes('horno')) { aparato = "horno eléctrico"; }
-            else { aparato = t; } 
+        const opciones = [
+            { label: "Microondas", val: "microondas" },
+            { label: "Audio", val: "equipo de audio" },
+            { label: "Pequeños electrodomésticos", val: "pequeño electrodoméstico" },
+            { label: "Otros", val: "electrodoméstico" }
+        ];
 
-            return {
-                mensaje: `Entendido. Para ${aparato}, lo mejor es que lo veamos personalmente.`,
-                aparato: aparato
-            };
-        }
+        opciones.forEach(opcion => {
+            const btn = document.createElement("a");
+            btn.href = generarLinkWhatsApp(opcion.val);
+            btn.target = "_blank";
+            btn.className = "boton-meli"; // Usa tu clase de estilo actual
+            btn.style.textAlign = "center";
+            btn.style.padding = "10px";
+            btn.style.textDecoration = "none";
+            btn.innerHTML = `💬 ${opcion.label}`;
+            divBotones.appendChild(btn);
+        });
 
-        // Crea y muestra la respuesta en el chat
-        function mostrarRespuesta(resultado) {
-            const chat = document.getElementById("chat-ia");
-            if (!chat) return;
-
-            const divTexto = document.createElement("div");
-            divTexto.className = "mensaje-ia";
-            divTexto.textContent = resultado.mensaje;
-            chat.appendChild(divTexto);
-
-            const linkWA = obtenerLinkWhatsApp(resultado.aparato);
-            const btnWA = document.createElement("a");
-            btnWA.href = linkWA;
-            btnWA.target = "_blank";
-            btnWA.className = "boton-meli"; // Mantenemos tu clase de estilo actual
-            btnWA.style.display = "block";
-            btnWA.style.marginTop = "10px";
-            btnWA.style.textAlign = "center";
-            btnWA.innerHTML = "💬 Enviar consulta por WhatsApp";
-            
-            chat.appendChild(btnWA);
-            chat.scrollTop = chat.scrollHeight;
-        }
-
-        // Manejo del evento de envío
-        const btnEnviar = document.getElementById("enviar-ia");
-        const inputUsuario = document.getElementById("mensaje-usuario");
-
-        function procesarEnvio() {
-            const texto = inputUsuario.value;
-            if (!texto.trim()) return;
-
-            const chat = document.getElementById("chat-ia");
-            const msgUser = document.createElement("div");
-            msgUser.className = "mensaje-usuario";
-            msgUser.textContent = texto;
-            chat.appendChild(msgUser);
-
-            const resultado = analizarConsulta(texto);
-            mostrarRespuesta(resultado);
-
-            inputUsuario.value = "";
-        }
-
-        if (btnEnviar) btnEnviar.addEventListener("click", procesarEnvio);
+        // Insertar los botones en el chat al cargar
+        const mensajeBienvenida = document.createElement("div");
+        mensajeBienvenida.className = "mensaje-ia";
+        mensajeBienvenida.innerHTML = "Seleccioná el equipo que necesitás reparar:";
         
-        // Permite enviar presionando "Enter"
-        if (inputUsuario) {
-            inputUsuario.addEventListener("keypress", function(e) {
-                if (e.key === "Enter") procesarEnvio();
-            });
-        }
+        chat.appendChild(mensajeBienvenida);
+        chat.appendChild(divBotones);
     });
-</script>
+        </script>
+        
