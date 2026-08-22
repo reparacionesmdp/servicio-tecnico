@@ -2,14 +2,28 @@
 <html lang="es">
 <head>
 
-    <!-- Google Analytics -->
+    <!-- =====================================================
+         GOOGLE ANALYTICS
+    ====================================================== -->
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B8C6TK0ZQX"></script>
+
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-B8C6TK0ZQX');
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag(){
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-B8C6TK0ZQX');
     </script>
+
+
+    <!-- =====================================================
+         CONFIGURACIÓN
+    ====================================================== -->
 
     <meta charset="UTF-8">
 
@@ -21,6 +35,14 @@
 
     <meta name="keywords"
           content="servicio técnico Mar del Plata, reparación microondas, reparación hornos eléctricos, reparación equipos de audio, reparación parlantes">
+
+    <meta name="author"
+          content="Martín Pulcini Reparaciones">
+
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
 
     <meta property="og:title"
           content="Martín Pulcini Reparaciones">
@@ -37,93 +59,166 @@
     <meta property="og:image"
           content="https://www.reparacionesmdp.com.ar/imagen/og-image.jpg">
 
+
+    <!-- =====================================================
+         TÍTULO
+    ====================================================== -->
+
     <title>
         Servicio Técnico Mar del Plata | Martín Pulcini Reparaciones
     </title>
 
+
+    <!-- =====================================================
+         CSS PRINCIPAL
+    ====================================================== -->
+
     <link rel="stylesheet" href="estilos.css">
+
+
+    <!-- =====================================================
+         ESTILOS
+    ====================================================== -->
 
     <style>
 
         /* =====================================================
+           CORRECCIÓN DE LA LÍNEA VERTICAL IZQUIERDA
+        ====================================================== */
+
+        html,
+        body {
+            border-left: none !important;
+        }
+
+        body::before,
+        body::after {
+            display: none !important;
+            content: none !important;
+            border-left: none !important;
+        }
+
+        header::before,
+        header::after,
+        main::before,
+        main::after,
+        footer::before,
+        footer::after {
+            display: none !important;
+            content: none !important;
+        }
+
+
+        /* =====================================================
            MENÚ LATERAL
-        ===================================================== */
+        ====================================================== */
 
         .menu-btn {
+
             position: fixed;
+
             top: 18px;
             left: 18px;
+
             width: 52px;
             height: 52px;
 
             background: #1a1a1a;
+
             border: 2px solid #86c232;
-            border-radius: 10px;
+
+            border-radius: 12px;
 
             color: #86c232;
+
             font-size: 27px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             cursor: pointer;
 
             z-index: 2001;
 
-            box-shadow: 0 0 15px rgba(134,194,50,.25);
+            box-shadow:
+                0 0 15px rgba(134,194,50,.25);
 
             transition: .3s;
         }
 
+
         .menu-btn:hover {
+
             background: #86c232;
+
             color: #111;
-            box-shadow: 0 0 25px #86c232;
+
+            box-shadow:
+                0 0 25px #86c232;
         }
 
 
+        /* =====================================================
+           MENÚ DESPLEGABLE
+        ====================================================== */
+
         .menu-lateral {
+
             position: fixed;
 
             top: 0;
             left: -310px;
 
             width: 290px;
+
             height: 100vh;
 
             background: #111;
 
             border-right: 2px solid #86c232;
 
-            box-shadow: 5px 0 25px rgba(0,0,0,.6);
+            box-shadow:
+                5px 0 25px rgba(0,0,0,.6);
 
             z-index: 2000;
 
             padding: 85px 20px 25px;
 
-            transition: left .35s ease;
+            transition:
+                left .35s ease;
 
             overflow-y: auto;
         }
 
+
         .menu-lateral.abierto {
+
             left: 0;
         }
 
 
         .menu-titulo {
+
             color: #86c232;
+
             text-align: center;
 
             font-size: 21px;
+
             font-weight: bold;
 
             margin-bottom: 25px;
+
+            text-shadow:
+                0 0 10px rgba(134,194,50,.3);
         }
 
 
         .menu-subtitulo {
+
             color: #777;
 
             font-size: 12px;
@@ -132,11 +227,13 @@
 
             letter-spacing: 1px;
 
-            margin: 20px 5px 8px;
+            margin:
+                20px 5px 8px;
         }
 
 
         .menu-enlace {
+
             display: flex;
 
             align-items: center;
@@ -166,17 +263,21 @@
 
 
         .menu-enlace:hover {
+
             border-color: #86c232;
 
             color: #86c232;
 
-            transform: translateX(4px);
+            transform:
+                translateX(4px);
 
-            box-shadow: 0 0 12px rgba(134,194,50,.2);
+            box-shadow:
+                0 0 12px rgba(134,194,50,.2);
         }
 
 
         .menu-cerrar {
+
             position: absolute;
 
             top: 18px;
@@ -195,18 +296,23 @@
 
 
         .menu-cerrar:hover {
+
             color: #86c232;
         }
 
 
-        /* Fondo oscuro cuando se abre el menú */
+        /* =====================================================
+           FONDO OSCURO DEL MENÚ
+        ====================================================== */
 
         .menu-overlay {
+
             position: fixed;
 
             inset: 0;
 
-            background: rgba(0,0,0,.65);
+            background:
+                rgba(0,0,0,.70);
 
             z-index: 1999;
 
@@ -219,6 +325,7 @@
 
 
         .menu-overlay.activo {
+
             opacity: 1;
 
             pointer-events: auto;
@@ -226,66 +333,319 @@
 
 
         /* =====================================================
-           CONTENIDO PRINCIPAL
-        ===================================================== */
+           HEADER
+        ====================================================== */
 
-        .bienvenida {
-            max-width: 900px;
+        .header-contenedor {
 
-            margin: 40px auto;
+            position: relative;
 
-            padding: 35px 25px;
+            overflow: hidden;
+
+            max-width: 1000px;
+
+            margin:
+                20px auto 45px;
+
+            padding:
+                45px 25px;
 
             text-align: center;
 
-            background: #1a1a1a;
+            background:
+                linear-gradient(
+                    135deg,
+                    #241052,
+                    #101d49
+                );
 
-            border: 2px solid #86c232;
+            border:
+                1px solid #08cbea;
 
-            border-radius: 14px;
+            border-radius: 18px;
 
             box-shadow:
-                0 0 20px rgba(134,194,50,.15);
+                0 0 25px
+                rgba(0,207,255,.16);
+        }
+
+
+        .header-contenedor::before {
+
+            display: none !important;
+
+        }
+
+
+        .logo-sitio img {
+
+            width: 220px;
+
+            max-width: 65vw;
+
+            height: auto;
+
+            display: block;
+
+            margin:
+                0 auto 25px;
+
+            filter:
+                drop-shadow(
+                    0 0 18px
+                    rgba(0,220,255,.35)
+                );
+        }
+
+
+        .header-contenedor h1 {
+
+            margin:
+                10px 0 20px;
+
+            font-size:
+                clamp(34px, 7vw, 58px);
+
+            line-height:
+                1.05;
+
+            color: #08d9ff;
+
+            text-shadow:
+                0 0 12px
+                rgba(0,217,255,.45);
+        }
+
+
+        .header-contenedor p {
+
+            max-width: 800px;
+
+            margin:
+                0 auto;
+
+            color: #ccc;
+
+            font-size: 19px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           BIENVENIDA / SERVICIO PROFESIONAL
+        ====================================================== */
+
+        .bienvenida {
+
+            position: relative;
+
+            max-width: 900px;
+
+            margin:
+                40px auto;
+
+            padding:
+                35px 35px 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #181818,
+                    #101010
+                );
+
+            border:
+                2px solid #86c232;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 0 25px
+                rgba(134,194,50,.14);
+
+            overflow: hidden;
+        }
+
+
+        .bienvenida-contenido {
+
+            display: grid;
+
+            grid-template-columns:
+                150px 1fr;
+
+            gap: 30px;
+
+            align-items: center;
+        }
+
+
+        .icono-profesional {
+
+            width: 120px;
+            height: 120px;
+
+            margin: auto;
+
+            border:
+                2px solid #86c232;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 58px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #202d18,
+                    #101010
+                );
+
+            box-shadow:
+                0 0 20px
+                rgba(134,194,50,.30);
         }
 
 
         .bienvenida h2 {
+
+            margin:
+                0 0 15px;
+
+            color: #fff;
+
+            font-size:
+                clamp(25px, 5vw, 34px);
+
+            line-height: 1.15;
+        }
+
+
+        .bienvenida h2 span {
+
             color: #86c232;
 
-            margin-top: 0;
+            display: block;
 
-            font-size: 30px;
+            margin-top: 4px;
         }
 
 
         .bienvenida p {
+
             color: #ccc;
 
             line-height: 1.7;
 
-            max-width: 700px;
+            margin: 0;
 
-            margin: auto;
+            font-size: 16px;
+        }
+
+
+        /* =====================================================
+           INDICADORES
+        ====================================================== */
+
+        .beneficios {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            margin-top: 30px;
+
+            padding-top: 22px;
+
+            border-top:
+                1px solid #292929;
+        }
+
+
+        .beneficio {
+
+            text-align: center;
+
+            padding:
+                5px 15px;
+
+            border-right:
+                1px solid #333;
+        }
+
+
+        .beneficio:last-child {
+
+            border-right:
+                none;
+        }
+
+
+        .beneficio-icono {
+
+            display: block;
+
+            color: #86c232;
+
+            font-size: 28px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .beneficio strong {
+
+            display: block;
+
+            color: #fff;
+
+            font-size: 14px;
+        }
+
+
+        .beneficio span {
+
+            color: #888;
+
+            font-size: 12px;
         }
 
 
         /* =====================================================
            SERVICIOS
-        ===================================================== */
+        ====================================================== */
 
         .servicios-titulo {
+
             text-align: center;
 
             color: #86c232;
 
-            margin-top: 45px;
+            margin:
+                55px 0 25px;
+
+            font-size: 32px;
+
+            text-shadow:
+                0 0 10px
+                rgba(134,194,50,.25);
         }
 
 
         .grid-servicios {
+
             max-width: 1000px;
 
-            margin: 25px auto 50px;
+            margin:
+                25px auto 50px;
 
             display: grid;
 
@@ -294,20 +654,26 @@
 
             gap: 18px;
 
-            padding: 0 15px;
+            padding:
+                0 15px;
         }
 
 
         .tarjeta {
-            background: #1a1a1a;
 
-            border: 1px solid #333;
+            background:
+                linear-gradient(
+                    145deg,
+                    #191919,
+                    #111
+                );
 
-            border-left: 4px solid #86c232;
+            border:
+                1px solid #333;
 
-            border-radius: 10px;
+            border-radius: 12px;
 
-            padding: 22px;
+            padding: 24px 18px;
 
             text-align: center;
 
@@ -316,56 +682,77 @@
 
 
         .tarjeta:hover {
-            transform: translateY(-4px);
 
-            border-color: #86c232;
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #86c232;
 
             box-shadow:
-                0 0 15px rgba(134,194,50,.18);
+                0 0 18px
+                rgba(134,194,50,.18);
         }
 
 
         .tarjeta h3 {
+
             color: #fff;
 
             margin-top: 0;
+
+            font-size: 19px;
         }
 
 
         .tarjeta p {
+
             color: #aaa;
 
             font-size: 14px;
 
-            line-height: 1.5;
+            line-height: 1.6;
+
+            margin-bottom: 0;
         }
 
 
         /* =====================================================
            EQUIPO EN VENTA
-        ===================================================== */
+        ====================================================== */
 
         .venta {
+
             max-width: 850px;
 
-            margin: 45px auto;
+            margin:
+                45px auto;
 
-            padding: 30px;
+            padding:
+                30px;
 
-            background: #1a1a1a;
+            background:
+                linear-gradient(
+                    145deg,
+                    #191919,
+                    #101010
+                );
 
-            border: 2px solid #86c232;
+            border:
+                2px solid #86c232;
 
-            border-radius: 12px;
+            border-radius: 14px;
 
             text-align: center;
 
             box-shadow:
-                0 0 20px rgba(134,194,50,.15);
+                0 0 20px
+                rgba(134,194,50,.15);
         }
 
 
         .venta h2 {
+
             color: #86c232;
 
             margin-top: 0;
@@ -373,6 +760,7 @@
 
 
         .venta p {
+
             color: #ccc;
 
             line-height: 1.6;
@@ -380,17 +768,21 @@
 
 
         .boton-instagram {
+
             display: inline-block;
 
             margin-top: 15px;
 
-            padding: 12px 22px;
+            padding:
+                13px 24px;
 
-            background: #1d1d1d;
+            background:
+                #1d1d1d;
 
-            border: 2px solid #86c232;
+            border:
+                2px solid #86c232;
 
-            border-radius: 7px;
+            border-radius: 8px;
 
             color: #86c232;
 
@@ -403,19 +795,23 @@
 
 
         .boton-instagram:hover {
-            background: #86c232;
+
+            background:
+                #86c232;
 
             color: #111;
 
-            box-shadow: 0 0 18px #86c232;
+            box-shadow:
+                0 0 18px #86c232;
         }
 
 
         /* =====================================================
            WHATSAPP
-        ===================================================== */
+        ====================================================== */
 
         .whatsapp-btn {
+
             position: fixed;
 
             bottom: 20px;
@@ -426,7 +822,8 @@
 
             height: 62px;
 
-            background: #25d366;
+            background:
+                #25d366;
 
             color: white;
 
@@ -450,7 +847,9 @@
 
 
         .whatsapp-btn:hover {
-            transform: scale(1.1);
+
+            transform:
+                scale(1.1);
 
             box-shadow:
                 0 0 28px #25d366;
@@ -459,20 +858,25 @@
 
         /* =====================================================
            FOOTER
-        ===================================================== */
+        ====================================================== */
 
         footer {
+
             text-align: center;
 
-            padding: 30px 20px;
+            padding:
+                30px 20px;
 
-            margin-top: 60px;
+            margin-top:
+                60px;
 
-            border-top: 1px solid #333;
+            border-top:
+                1px solid #333;
         }
 
 
         footer p {
+
             color: #666;
 
             font-size: 13px;
@@ -480,6 +884,7 @@
 
 
         footer a {
+
             color: #86c232;
 
             text-decoration: none;
@@ -490,28 +895,228 @@
 
         /* =====================================================
            CELULAR
-        ===================================================== */
+        ====================================================== */
 
         @media (max-width:600px) {
 
+
             .menu-btn {
+
                 width: 48px;
+
                 height: 48px;
+
                 font-size: 24px;
+
+                top: 18px;
+
+                left: 18px;
             }
+
+
+            .header-contenedor {
+
+                margin:
+                    10px 10px 35px;
+
+                padding:
+                    38px 18px 30px;
+            }
+
+
+            .logo-sitio img {
+
+                width: 190px;
+
+                margin-bottom: 20px;
+            }
+
+
+            .header-contenedor h1 {
+
+                font-size: 40px;
+
+                line-height: 1.05;
+            }
+
+
+            .header-contenedor p {
+
+                font-size: 16px;
+
+                line-height: 1.65;
+            }
+
 
             .bienvenida {
-                margin: 25px 12px;
-                padding: 25px 18px;
+
+                margin:
+                    25px 12px;
+
+                padding:
+                    28px 18px 20px;
             }
+
+
+            .bienvenida-contenido {
+
+                display: block;
+
+                text-align: center;
+            }
+
+
+            .icono-profesional {
+
+                width: 95px;
+
+                height: 95px;
+
+                font-size: 45px;
+
+                margin-bottom: 22px;
+            }
+
 
             .bienvenida h2 {
-                font-size: 24px;
+
+                font-size: 28px;
             }
 
+
+            .bienvenida p {
+
+                font-size: 15px;
+            }
+
+
+            .beneficios {
+
+                grid-template-columns:
+                    repeat(3,1fr);
+
+                margin-top: 25px;
+
+                padding-top: 18px;
+            }
+
+
+            .beneficio {
+
+                padding:
+                    4px 6px;
+            }
+
+
+            .beneficio-icono {
+
+                font-size: 23px;
+            }
+
+
+            .beneficio strong {
+
+                font-size: 11px;
+            }
+
+
+            .beneficio span {
+
+                font-size: 10px;
+            }
+
+
+            .servicios-titulo {
+
+                font-size: 28px;
+
+                margin-top: 45px;
+            }
+
+
+            .grid-servicios {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+                gap: 12px;
+
+                padding:
+                    0 12px;
+            }
+
+
+            .tarjeta {
+
+                padding:
+                    20px 12px;
+            }
+
+
+            .tarjeta h3 {
+
+                font-size: 16px;
+            }
+
+
+            .tarjeta p {
+
+                font-size: 13px;
+            }
+
+
             .venta {
-                margin: 30px 12px;
-                padding: 25px 18px;
+
+                margin:
+                    30px 12px;
+
+                padding:
+                    25px 18px;
+            }
+
+
+            .menu-lateral {
+
+                width: 285px;
+            }
+
+
+            .whatsapp-btn {
+
+                width: 58px;
+
+                height: 58px;
+
+                bottom: 18px;
+
+                right: 18px;
+            }
+
+        }
+
+
+        /* =====================================================
+           CELULAR MUY PEQUEÑO
+        ====================================================== */
+
+        @media (max-width:380px) {
+
+            .grid-servicios {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .header-contenedor h1 {
+
+                font-size: 34px;
+            }
+
+
+            .beneficio strong {
+
+                font-size: 10px;
             }
 
         }
@@ -538,8 +1143,9 @@
 </button>
 
 
+
 <!-- =====================================================
-     FONDO DEL MENÚ
+     FONDO OSCURO
 ===================================================== -->
 
 <div
@@ -548,436 +1154,5 @@
 </div>
 
 
-<!-- =====================================================
-     MENÚ LATERAL
-===================================================== -->
 
-<nav
-    id="menuLateral"
-    class="menu-lateral">
-
-
-    <button
-        id="cerrarMenu"
-        class="menu-cerrar"
-        aria-label="Cerrar menú">
-
-        ✕
-
-    </button>
-
-
-    <div class="menu-titulo">
-
-        Martín Pulcini
-        <br>
-        Reparaciones
-
-    </div>
-
-
-    <div class="menu-subtitulo">
-
-        Navegación
-
-    </div>
-
-
-    <a
-        href="#inicio"
-        class="menu-enlace">
-
-        🏠 Inicio
-
-    </a>
-
-
-    <a
-        href="#servicios"
-        class="menu-enlace">
-
-        🔧 Servicios
-
-    </a>
-
-
-    <a
-        href="#venta"
-        class="menu-enlace">
-
-        🛒 Equipo en venta
-
-    </a>
-
-
-    <div class="menu-subtitulo">
-
-        Contacto
-
-    </div>
-
-
-    <a
-        href="https://www.instagram.com/martinpulcini.serviciotecnico/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="menu-enlace">
-
-        📸 Instagram
-
-    </a>
-
-
-    <a
-        href="https://wa.me/5492234373563?text=Hola%20Mart%C3%ADn,%20vi%20tu%20p%C3%A1gina%20web%20y%20quer%C3%ADa%20consultarte%20por%20una%20reparaci%C3%B3n."
-        target="_blank"
-        rel="noopener noreferrer"
-        class="menu-enlace">
-
-        💬 WhatsApp
-
-    </a>
-
-
-</nav>
-
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header
-    id="inicio"
-    class="header-contenedor">
-
-
-    <div class="logo-sitio">
-
-        <img
-            src="imagen/logo-faro.png"
-            alt="Martín Pulcini Reparaciones">
-
-    </div>
-
-
-    <h1>
-
-        Martin Pulcini Reparaciones
-
-    </h1>
-
-
-    <p>
-
-        Reparamos microondas, hornos eléctricos,
-        equipos de audio y reproductores.
-
-        Todas nuestras reparaciones cuentan con garantía.
-
-        Servicio técnico en Mar del Plata y zona.
-
-    </p>
-
-
-</header>
-
-
-
-<main>
-
-
-<!-- =====================================================
-     BIENVENIDA
-===================================================== -->
-
-<section class="bienvenida">
-
-
-    <h2>
-
-        Servicio Técnico Profesional
-
-    </h2>
-
-
-    <p>
-
-        ¿Tu equipo dejó de funcionar?
-
-        En Martín Pulcini Reparaciones
-        diagnosticamos y reparamos equipos
-        electrónicos y electrodomésticos.
-
-        Trabajamos con experiencia,
-        responsabilidad y garantía
-        en nuestras reparaciones.
-
-    </p>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     SERVICIOS
-===================================================== -->
-
-<h2
-    id="servicios"
-    class="servicios-titulo">
-
-    Nuestros Servicios
-
-</h2>
-
-
-<div class="grid-servicios">
-
-
-    <div class="tarjeta">
-
-        <h3>
-
-            🏠 Línea Blanca
-
-        </h3>
-
-        <p>
-
-            Reparación de microondas,
-            hornos eléctricos y
-            pequeños electrodomésticos.
-
-        </p>
-
-    </div>
-
-
-
-    <div class="tarjeta">
-
-        <h3>
-
-            🔊 Equipos de Audio
-
-        </h3>
-
-        <p>
-
-            Reparación de equipos de música,
-            amplificadores, sintoamplificadores
-            y sistemas de sonido.
-
-        </p>
-
-    </div>
-
-
-
-    <div class="tarjeta">
-
-        <h3>
-
-            💿 Reproductores
-
-        </h3>
-
-        <p>
-
-            Diagnóstico y reparación
-            de reproductores de CD y DVD.
-
-        </p>
-
-    </div>
-
-
-
-    <div class="tarjeta">
-
-        <h3>
-
-            ⚙️ Diagnóstico
-
-        </h3>
-
-        <p>
-
-            Detectamos la causa de la falla
-            antes de realizar la reparación.
-
-        </p>
-
-    </div>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     EQUIPO EN VENTA
-===================================================== -->
-
-<section
-    id="venta"
-    class="venta">
-
-
-    <h2>
-
-        🛒 Equipo en venta
-
-    </h2>
-
-
-    <p>
-
-        Actualmente tenemos un equipo disponible
-        para la venta.
-
-    </p>
-
-
-    <p>
-
-        📸 Podés ver el equipo y sus detalles
-        en nuestro Instagram.
-
-    </p>
-
-
-    <a
-        href="https://www.instagram.com/martinpulcini.serviciotecnico/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="boton-instagram">
-
-        📸 Ver equipo en venta
-
-    </a>
-
-
-</section>
-
-
-
-</main>
-
-
-
-<!-- =====================================================
-     WHATSAPP
-===================================================== -->
-
-<a
-    href="https://wa.me/5492234373563?text=Hola%20Mart%C3%ADn,%20vi%20tu%20p%C3%A1gina%20web%20y%20quer%C3%ADa%20consultarte%20por%20una%20reparaci%C3%B3n."
-    class="whatsapp-btn"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Contactar por WhatsApp">
-
-
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 448 512"
-        width="32"
-        height="32"
-        fill="#ffffff">
-
-        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-
-    </svg>
-
-
-</a>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-
-    <p>
-
-        © 2026 Martin Pulcini Reparaciones.
-        Todos los derechos reservados.
-
-    </p>
-
-
-    <a href="privacidad.html">
-
-        Política de Privacidad
-
-    </a>
-
-
-</footer>
-
-
-
-<!-- =====================================================
-     JAVASCRIPT DEL MENÚ
-===================================================== -->
-
-<script>
-
-const abrirMenu =
-    document.getElementById("abrirMenu");
-
-const cerrarMenu =
-    document.getElementById("cerrarMenu");
-
-const menuLateral =
-    document.getElementById("menuLateral");
-
-const menuOverlay =
-    document.getElementById("menuOverlay");
-
-const enlacesMenu =
-    document.querySelectorAll(".menu-enlace");
-
-
-function abrir() {
-
-    menuLateral.classList.add("abierto");
-
-    menuOverlay.classList.add("activo");
-
-}
-
-
-function cerrar() {
-
-    menuLateral.classList.remove("abierto");
-
-    menuOverlay.classList.remove("activo");
-
-}
-
-
-abrirMenu.addEventListener("click", abrir);
-
-cerrarMenu.addEventListener("click", cerrar);
-
-menuOverlay.addEventListener("click", cerrar);
-
-
-enlacesMenu.forEach(function(enlace) {
-
-    enlace.addEventListener("click", cerrar);
-
-});
-
-
-</script>
-
-
-</body>
-</html>
+<
